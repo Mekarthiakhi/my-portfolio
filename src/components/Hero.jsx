@@ -163,7 +163,7 @@ export default function Hero() {
               View Projects <ChevronRight size={14} />
             </a>
 
-            <a href="/Akhilesh.pdf" className="btn-secondary">
+            <a href="/Akhilesh_1.pdf" className="btn-secondary">
               <Download size={14} /> Resume
             </a>
           </div>

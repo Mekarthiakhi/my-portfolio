@@ -3,13 +3,14 @@ import { motion } from 'framer-motion';
 import { useInView } from '../hooks/useInView';
 import { personalInfo } from '../data/portfolio';
 import { Mail, Phone, MapPin, GitFork, Link2, Send, CheckCircle, ArrowRight } from 'lucide-react';
+import emailjs from 'emailjs-com';
 
 const contactItems = [
   { icon: Mail, label: 'Email', value: 'akhileshmekarthi74@gmail.com', href: `mailto:${personalInfo.email}`, color: '#3b82f6' },
   { icon: Phone, label: 'Phone', value: '+91 7347234445', href: `tel:${personalInfo.phone}`, color: '#8b5cf6' },
   { icon: MapPin, label: 'Location', value: 'Hyderabad, India', href: '#', color: '#06b6d4' },
-  { icon: GitFork, label: 'GitHub', value: 'github.com/akhileshmekarthi', href: personalInfo.github, color: '#10b981' },
-  { icon: Link2, label: 'LinkedIn', value: 'linkedin.com/in/akhilesh-mekarthi', href: personalInfo.linkedin, color: '#f59e0b' },
+  { icon: GitFork, label: 'GitHub', value: 'github.com/Mekarthiakhi', href: personalInfo.github, color: '#10b981' },
+  { icon: Link2, label: 'LinkedIn', value: 'www.linkedin.com/in/akhilesh-mekarthi-a62501227/', href: personalInfo.linkedin, color: '#f59e0b' },
 ];
 
 export default function Contact() {
@@ -20,13 +21,39 @@ export default function Contact() {
 
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    await new Promise(r => setTimeout(r, 1200));
-    setLoading(false);
-    setSubmitted(true);
-  };
+const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  if (loading) return;
+  setLoading(true);
+
+  try {
+  // Send to you
+  await emailjs.send('akki143','template_p8jb95m',{
+    from_name: form.name,
+    from_email: form.email,
+    subject: form.subject,
+    message: form.message,
+  }, 'p993NoXWpBAKeYPxd');
+
+  // Auto reply (safe)
+  try {
+    await emailjs.send('akki143','template_47nef5o',{
+      from_name: form.name,
+      from_email: form.email,
+    }, 'p993NoXWpBAKeYPxd');
+  } catch (err) {
+    console.warn("Auto-reply failed", err);
+  }
+
+  setSubmitted(true);
+} catch (error) {
+  console.error("Main email failed", error);
+  alert("Failed to send message");
+}
+
+  setLoading(false);
+};
 
   const containerVariants = {
     hidden: { opacity: 0 },

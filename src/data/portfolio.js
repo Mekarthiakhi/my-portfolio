@@ -12,8 +12,8 @@ export const personalInfo = {
   email: "akhileshmekarthi74@gmail.com",
   phone: "+91 7347234445",
   location: "Hyderabad, India",
-  linkedin: "https://linkedin.com/in/akhilesh-mekarthi",
-  github: "https://github.com/akhileshmekarthi",
+  linkedin: "https://www.linkedin.com/in/akhilesh-mekarthi-a62501227/",
+  github: "https://github.com/Mekarthiakhi",
   leetcode: "https://leetcode.com/akhileshmekarthi",
 };
 
