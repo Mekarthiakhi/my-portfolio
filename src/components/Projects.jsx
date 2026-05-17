@@ -155,6 +155,7 @@ export default function Projects() {
                       borderRadius: "16px 16px 0 0",
                       opacity: hovered === project.title ? 1 : 0.6,
                       transition: "opacity 0.3s",
+                      zIndex: 3,
                     }}
                   />
 
@@ -173,6 +174,7 @@ export default function Projects() {
                         background: `${project.color}10`,
                         filter: "blur(40px)",
                         pointerEvents: "none",
+                        zIndex: 3,
                       }}
                     />
                   )}

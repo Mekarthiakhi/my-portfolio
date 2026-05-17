@@ -146,8 +146,8 @@ export const projects = [
     features: ["Real-time messaging", "Persistent history", "Typing indicators", "Online presence"],
     color: "#f59e0b",
     icon: "💬",
-    github: "https://github.com/akhileshmekarthi",
-    demo: "#",
+    github: "https://github.com/Mekarthiakhi/Chat-App",
+    demo: "https://chat-app-d3uk.onrender.com",
     category: "Full Stack"
   },
   {
@@ -159,6 +159,28 @@ export const projects = [
     icon: "🛒",
     github: "https://github.com/akhileshmekarthi",
     demo: "#",
+    category: "Full Stack"
+  },
+  {
+    title: "DealScout AI Dashboard",
+    description: "AI-powered product comparison dashboard with live API integrations and real-time deal fetching, featuring a high-performance UI.",
+    tech: ["React", "Node.js", "AI APIs", "Vite"],
+    features: ["AI product comparison", "Real-time deal fetching", "Secure API integration", "Dynamic layout"],
+    color: "#ec4899",
+    icon: "🛍️",
+    github: "https://github.com/Mekarthiakhi/dealScout",
+    demo: "https://dealscout-1-oz24.onrender.com/",
+    category: "Frontend"
+  },
+  {
+    title: "Loan Management System",
+    description: "Comprehensive Firebase-powered loan management platform featuring advanced interest calculation logic, CSV exports, and dynamic dashboard statistics.",
+    tech: ["React", "Firebase", "JavaScript", "Tailwind CSS"],
+    features: ["Complex interest math", "CSV export functionality", "Role-based access", "Dark mode UI"],
+    color: "#14b8a6",
+    icon: "💰",
+    github: "https://github.com/Mekarthiakhi/loan-app",
+    demo: "https://loan-app-chi-seven.vercel.app/",
     category: "Full Stack"
   }
 ];
