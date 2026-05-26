@@ -20,7 +20,11 @@ export default function TechIcons() {
         return (
           <motion.div
             key={idx}
-            className={`absolute ${icon.positionClass} hidden sm:block z-0 pointer-events-auto`}
+            className={`absolute ${icon.positionClass} hidden sm:block z-30 pointer-events-auto cursor-grab`}
+            drag
+            dragConstraints={{ left: -120, right: 120, top: -120, bottom: 120 }}
+            dragElastic={0.45}
+            whileDrag={{ scale: 1.15, cursor: "grabbing" }}
             initial={{ opacity: 0.6 }}
             animate={{ y: [0, -12, 0] }}
             whileHover={{ 

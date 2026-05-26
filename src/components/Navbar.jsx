@@ -3,10 +3,11 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Moon, Sun, Menu, X, Code2 } from 'lucide-react';
 
 const navLinks = [
+  { label: 'Home', href: '#hero' },
   { label: 'About', href: '#about' },
   { label: 'Skills', href: '#skills' },
-  { label: 'Experience', href: '#experience' },
   { label: 'Projects', href: '#projects' },
+  { label: 'Experience', href: '#experience' },
   { label: 'Contact', href: '#contact' },
 ];
 

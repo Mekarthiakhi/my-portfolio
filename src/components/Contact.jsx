@@ -104,11 +104,15 @@ const handleSubmit = async (e) => {
         >
           {/* Header */}
           <motion.div variants={itemVariants} style={{ marginBottom: 64, textAlign: 'center' }}>
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '6px 14px', borderRadius: 999, background: 'rgba(34, 197, 94, 0.1)', border: '1px solid rgba(34, 197, 94, 0.3)', marginBottom: 20, fontSize: '0.75rem', fontWeight: 700, color: '#22c55e', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
+              Open for Opportunities
+            </div>
             <div className="section-tag" style={{ justifyContent: 'center' }}><span>●</span> Get In Touch</div>
             <h2 className="section-title" style={{ textAlign: 'center' }}>
               Let's build something <span className="gradient-text">great</span>
             </h2>
-            <p className="section-subtitle" style={{ margin: '0 auto', textAlign: 'center' }}>
+            <p className="section-subtitle animate-pulse" style={{ margin: '0 auto', textAlign: 'center' }}>
               Open to new opportunities, collaborations, and interesting engineering challenges.
             </p>
           </motion.div>

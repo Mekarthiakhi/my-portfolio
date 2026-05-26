@@ -1,215 +1,230 @@
 // src/components/Hero.jsx
 import { motion } from "framer-motion";
 import { ReactTyped } from "react-typed";
-import {
-  ArrowDown,
-  Download,
-  ChevronRight,
-  Sparkles,
-} from "lucide-react";
+import { ArrowDown, Download, ChevronRight, Sparkles, Mail } from "lucide-react";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { personalInfo } from "../data/portfolio";
 import akki from "../../public/akki.png";
 import TechIcons from "./TechIcons";
+
+const fade = (delay = 0) => ({
+  initial: { opacity: 0, y: 22 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.55, delay, ease: "easeOut" },
+});
 
 export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative flex items-center justify-center min-h-screen p-8 bg-gradient-to-r from-brand-indigo to-brand-cyan animate-gradient-move overflow-hidden"
+      className="relative flex items-center justify-center min-h-screen overflow-hidden"
+      style={{ background: "var(--bg-primary)" }}
     >
-      {/* Background Grid */}
+      {/* Mesh grid */}
       <div
+        className="absolute inset-0 pointer-events-none"
         style={{
-          position: "absolute",
-          inset: 0,
           backgroundImage: `
-            linear-gradient(rgba(99,102,241,0.04) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(99,102,241,0.04) 1px, transparent 1px)
+            linear-gradient(rgba(99,102,241,0.035) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(99,102,241,0.035) 1px, transparent 1px)
           `,
-          backgroundSize: "60px 60px",
-          pointerEvents: "none",
+          backgroundSize: "64px 64px",
         }}
       />
 
-      {/* Ambient background glows for high-end aesthetic */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-brand-indigo/10 rounded-full blur-[120px] pointer-events-none z-0" />
-      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-brand-cyan/10 rounded-full blur-[120px] pointer-events-none z-0" />
+      {/* Ambient glows */}
+      <div className="absolute top-1/4 left-1/3 w-[480px] h-[480px] rounded-full pointer-events-none"
+        style={{ background: "radial-gradient(circle, rgba(59,130,246,0.08) 0%, transparent 70%)" }} />
+      <div className="absolute bottom-1/3 right-1/4 w-[360px] h-[360px] rounded-full pointer-events-none"
+        style={{ background: "radial-gradient(circle, rgba(139,92,246,0.07) 0%, transparent 70%)" }} />
 
-      {/* Floating Tech Stack Icons */}
+      {/* Floating Tech Icons */}
       <TechIcons />
 
-      <div className="max-w-6xl w-full mx-auto relative z-10 flex flex-col md:flex-row items-center justify-between gap-12 md:gap-16 px-6 md:px-12 py-12">
-        {/* LEFT SIDE (Profile Image) */}
+      {/* ── Main Content ── */}
+      <div className="container relative z-10 flex flex-col md:flex-row items-center gap-14 py-28 md:py-20">
+
+        {/* LEFT — Profile Image */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8 }}
-          style={{
-            display: "flex",
-            justifyContent: "center",
-          }}
+          initial={{ opacity: 0, scale: 0.88, x: -30 }}
+          animate={{ opacity: 1, scale: 1, x: 0 }}
+          transition={{ duration: 0.75, ease: "easeOut" }}
+          className="shrink-0 flex justify-center w-full md:w-auto"
         >
-          <div className="p-4 md:p-6 rounded-full">
-            <div className="w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 rounded-full overflow-hidden shadow-2xl">
-              <img src={akki} alt={personalInfo.name} className="w-full h-full object-cover rounded-full" />
+          <div className="relative">
+            {/* Glow ring */}
+            <div
+              className="absolute -inset-[3px] rounded-full blur-[6px] opacity-60"
+              style={{ background: "linear-gradient(135deg, #3b82f6, #8b5cf6, #06b6d4)" }}
+            />
+            {/* Image */}
+            <div className="relative w-52 h-52 sm:w-60 sm:h-60 md:w-68 md:h-68 rounded-full overflow-hidden border border-white/10">
+              <img
+                src={akki}
+                alt={`${personalInfo.name} — Portfolio Photo`}
+                className="w-full h-full object-cover"
+                loading="eager"
+              />
+              <div className="absolute inset-0 rounded-full bg-gradient-to-t from-black/20 to-transparent" />
             </div>
+            {/* Status badge */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.9 }}
+              className="absolute -bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-1.5 px-3 py-1.5 rounded-full whitespace-nowrap"
+              style={{
+                background: "rgba(6,11,22,0.92)",
+                border: "1px solid rgba(16,185,129,0.35)",
+                backdropFilter: "blur(12px)",
+              }}
+            >
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 status-ping" />
+              <span className="text-[10px] font-bold tracking-widest uppercase text-emerald-400">
+                Open to work
+              </span>
+            </motion.div>
           </div>
         </motion.div>
 
-        {/* RIGHT SIDE (Content) */}
-        <div style={{ padding: "18px" }}>
+        {/* RIGHT — Text */}
+        <div className="flex-1 text-center md:text-left min-w-0">
+
           {/* Badge */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
+          <motion.div {...fade(0)} className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full mb-5"
             style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: 8,
-              padding: "6px 14px",
-              borderRadius: 999,
-              background: "rgba(99,102,241,0.1)",
+              background: "rgba(99,102,241,0.08)",
               border: "1px solid rgba(99,102,241,0.3)",
-              marginBottom: 20,
-              fontSize: "0.75rem",
-              fontWeight: 600,
-              color: "#6366f1",
-            }}
-          >
-            <Sparkles size={12} className="animate-pulse" />
-            Available for Opportunities
+            }}>
+            <Sparkles size={12} className="text-indigo-400 animate-pulse" />
+            <span className="text-[11px] font-bold tracking-wide uppercase text-indigo-300">
+              Full Stack · Healthcare · Real-Time Apps
+            </span>
           </motion.div>
 
-          {/* NAME */}
+          {/* Name */}
           <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-[clamp(2.2rem,4vw,3rem)] font-extrabold mb-3 leading-snug"
+            {...fade(0.08)}
+            className="font-black mb-2 leading-none"
+            style={{ fontSize: "clamp(2.2rem, 5.5vw, 3.8rem)" }}
           >
-            {personalInfo.name.split(" ").map((word, i) => (
-              <span key={i}>
-                {i === 1 ? <span className="gradient-text">{word}</span> : word}
-                {i === 0 ? " " : ""}
-              </span>
-            ))}
+            {personalInfo.name.split(" ").map((w, i) =>
+              i === 1
+                ? <span key={i} className="gradient-text"> {w}</span>
+                : <span key={i}>{w}</span>
+            )}
           </motion.h1>
 
-          {/* Premium Headline */}
+          {/* Sub-title */}
           <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.15 }}
-            className="text-[clamp(1.5rem,3vw,2rem)] font-bold text-[var(--text-secondary)] mb-4"
+            {...fade(0.14)}
+            className="mb-3"
+            style={{
+              fontSize: "clamp(0.95rem, 2.2vw, 1.2rem)",
+              fontWeight: 500,
+              color: "var(--text-secondary)",
+            }}
           >
-            Building Scalable Healthcare & Modern Web Applications
+            Building Scalable Healthcare &amp; Modern Web Applications
           </motion.h2>
 
-          {/* TYPING ROLE */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-          >
+          {/* Typing */}
+          <motion.div {...fade(0.18)} className="mb-4 flex items-center gap-1.5 justify-center md:justify-start">
+            <span className="text-sm font-semibold text-indigo-400">I'm a </span>
             <ReactTyped
               strings={["Frontend Developer", "React Developer", "Full Stack Developer", "Software Engineer"]}
-              typeSpeed={60}
-              backSpeed={40}
+              typeSpeed={55}
+              backSpeed={38}
               loop
-              className="text-lg text-[var(--text-secondary)] font-semibold inline-block mb-3"
+              className="text-sm font-semibold"
+              style={{ color: "var(--text-secondary)" }}
             />
           </motion.div>
 
-          {/* TAGLINE */}
+          {/* Tagline */}
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
+            {...fade(0.22)}
+            className="mb-8 leading-relaxed"
             style={{
-              maxWidth: 500,
+              fontSize: "0.9rem",
               color: "var(--text-secondary)",
-              marginBottom: 28,
-              lineHeight: 1.6,
+              maxWidth: "480px",
+              margin: "0 auto 2rem",
             }}
           >
-            {personalInfo.tagline}
+            2+ years building high-performance production systems. Specializing in
+            React.js, Node.js, Firebase, PHP, real-time architectures, and optimised database design.
           </motion.p>
 
-          {/* CTA */}
+          {/* CTA Row */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            style={{ display: "flex", gap: 12, flexWrap: "wrap", alignItems: "center" }}
+            {...fade(0.27)}
+            className="flex flex-wrap gap-3 items-center justify-center md:justify-start mb-8"
           >
-            {/* Icon-based CTA Buttons */}
-            <a
-              href="#projects"
-              className="icon-btn p-2 rounded-full bg-white/5 hover:bg-white/10 transition flex items-center justify-center"
-              title="Projects"
-            >
-              <ChevronRight size={20} />
-            </a>
-            <a
-              href="/Akhilesh_1.pdf"
-              className="icon-btn p-2 rounded-full bg-white/5 hover:bg-white/10 transition flex items-center justify-center"
-              download
-              title="Resume"
-            >
-              <Download size={20} />
-            </a>
-            <a
-              href={"mailto:" + personalInfo.email}
-              className="icon-btn p-2 rounded-full bg-white/5 hover:bg-white/10 transition flex items-center justify-center"
-              title="Email"
-            >
-              {/* Simple mail icon using inline SVG */}
-              <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24" className="text-white">
-                <path d="M2 4v16h20V4H2zm18 2l-8 5-8-5h16zm0 12H4V8l8 5 8-5v12z" />
-              </svg>
-            </a>
-            {/* Icon-based Social Links alongside main buttons for a clean UI */}
-            <div style={{ display: "flex", gap: 10, marginLeft: 8 }}>
-              {/* GitHub */}
-              <a
-                href={personalInfo.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="social-icon p-3 rounded-full bg-white/5 hover:bg-white/10 transition flex items-center justify-center"
-                title="GitHub"
-              >
-                <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24" className="text-white">
-                  <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.11.82-.26.82-.577v-2.234c-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.43.372.82 1.102.82 2.222v3.293c0 .319.22.694.825.576C20.565 21.795 24 17.3 24 12c0-6.63-5.37-12-12-12z" />
-                </svg>
-              </a>
+            <motion.a href="#projects" className="btn-primary" whileHover={{ y: -2 }} whileTap={{ scale: 0.97 }}>
+              <ChevronRight size={15} />
+              View Projects
+            </motion.a>
+            <motion.a href="/Akhilesh_1.pdf" download className="btn-secondary" whileHover={{ y: -2 }} whileTap={{ scale: 0.97 }}>
+              <Download size={15} />
+              Resume
+            </motion.a>
 
-              {/* LinkedIn */}
-              <a
-                href={personalInfo.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="social-icon p-3 rounded-full bg-white/5 hover:bg-white/10 transition flex items-center justify-center"
-                title="LinkedIn"
-              >
-                <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24" className="text-white">
-                  <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-                </svg>
-              </a>
+            {/* Social icons */}
+            <div className="flex gap-2">
+              {[
+                { href: personalInfo.github,            Icon: FaGithub,   label: "GitHub" },
+                { href: personalInfo.linkedin,           Icon: FaLinkedin, label: "LinkedIn" },
+                { href: `mailto:${personalInfo.email}`,  Icon: Mail,       label: "Email" },
+              ].map(({ href, Icon, label }) => (
+                <motion.a
+                  key={label}
+                  href={href}
+                  target={href.startsWith("http") ? "_blank" : undefined}
+                  rel="noopener noreferrer"
+                  title={label}
+                  className="icon-btn"
+                  whileHover={{ y: -3, scale: 1.1 }}
+                >
+                  <Icon size={16} />
+                </motion.a>
+              ))}
             </div>
           </motion.div>
 
-
+          {/* Tech tags */}
+          <motion.div
+            {...fade(0.36)}
+            className="flex flex-wrap gap-2 justify-center md:justify-start"
+          >
+            {["React.js", "Node.js", "Firebase", "PHP", "MySQL", "Real-Time"].map((tag) => (
+              <span
+                key={tag}
+                className="text-[10px] font-bold px-2.5 py-1 rounded-md"
+                style={{
+                  background: "rgba(99,102,241,0.07)",
+                  border: "1px solid rgba(99,102,241,0.18)",
+                  color: "#a5b4fc",
+                }}
+              >
+                {tag}
+              </span>
+            ))}
+          </motion.div>
         </div>
       </div>
 
-      {/* Scroll Down */}
+      {/* Scroll indicator */}
       <motion.div
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-        animate={{ y: [0, 8, 0] }}
-        transition={{ repeat: Infinity, duration: 1.5 }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1"
+        style={{ opacity: 0.4 }}
+        animate={{ y: [0, 7, 0] }}
+        transition={{ repeat: Infinity, duration: 1.9 }}
       >
-        <ArrowDown size={18} className="text-white animate-pulse" />
+        <span className="text-[9px] font-bold uppercase tracking-widest" style={{ color: "var(--text-muted)" }}>
+          scroll
+        </span>
+        <ArrowDown size={13} style={{ color: "var(--text-muted)" }} />
       </motion.div>
     </section>
   );
