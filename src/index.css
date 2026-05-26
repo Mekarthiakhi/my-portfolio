@@ -154,3 +154,22 @@ h1, h2, h3, h4 { font-family: DM Sans;; }
 .animate-float { animation: float 6s ease-in-out infinite; }
 .animate-gradient { background-size: 300% 300%; animation: gradient-shift 8s ease infinite; }
 .animate-spin-slow { animation: spin-slow 20s linear infinite; }
+
+/* Icon button base styling */
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.05);
+  transition: background 0.3s ease;
+}
+.icon-btn:hover {
+  background: rgba(255,255,255,0.1);
+}
+.icon-btn svg {
+  color: white;
+}
+
