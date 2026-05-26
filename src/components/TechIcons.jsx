@@ -31,10 +31,11 @@ export default function TechIcons() {
             transition={{ repeat: Infinity, duration: 4, delay, ease: "easeInOut" }}
           >
             <div 
-              className="p-3 bg-white/[0.02] backdrop-blur-md rounded-2xl border border-white/10 shadow-lg flex items-center justify-center transition-all duration-300"
+              className="p-3 backdrop-blur-md rounded-2xl shadow-lg flex items-center justify-center transition-all duration-300"
               style={{ 
-                boxShadow: `0 0 20px ${icon.color}15`,
-                borderColor: `${icon.color}30`
+                background: 'var(--glass)',
+                border: '1px solid var(--glass-border)',
+                boxShadow: `0 8px 32px 0 rgba(0, 0, 0, 0.08), 0 0 20px ${icon.color}15`,
               }}
             >
               <Icon 

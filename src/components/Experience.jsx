@@ -1,14 +1,14 @@
 import { motion } from 'framer-motion';
 import { useInView } from '../hooks/useInView';
 import { experience } from '../data/portfolio';
-import { Briefcase, MapPin, Calendar, TrendingUp, CheckCircle } from 'lucide-react';
+import { Briefcase, MapPin, Calendar, TrendingUp, CheckCircle, Award } from 'lucide-react';
 
 export default function Experience() {
   const [ref, inView] = useInView();
 
   const containerVariants = {
     hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { staggerChildren: 0.12 } }
+    visible: { opacity: 1, transition: { staggerChildren: 0.15 } }
   };
 
   const itemVariants = {
@@ -16,11 +16,10 @@ export default function Experience() {
     visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } }
   };
 
-  const exp = experience[0];
   const colors = ['#3b82f6', '#8b5cf6', '#06b6d4', '#10b981', '#f59e0b'];
 
   return (
-    <section id="experience" style={{ padding: 'clamp(80px, 10vw, 120px) 24px', maxWidth: 1200, margin: '0 auto' }}>
+    <section id="experience" className="py-20 px-6 max-w-6xl mx-auto" style={{ scrollMarginTop: '80px' }}>
       <motion.div
         ref={ref}
         variants={containerVariants}
@@ -28,144 +27,120 @@ export default function Experience() {
         animate={inView ? 'visible' : 'hidden'}
       >
         {/* Header */}
-        <motion.div variants={itemVariants} style={{ marginBottom: 64 }}>
-          <div className="section-tag"><span>●</span> Work Experience</div>
+        <motion.div variants={itemVariants} className="mb-16">
+          <div className="section-tag"><span>●</span> Professional Experience</div>
           <h2 className="section-title">
             Where I've <span className="gradient-text">built</span> things
           </h2>
           <p className="section-subtitle">
-            Real production work, measurable impact, and ownership at scale.
+            Real production work, measurable impact, and system ownership.
           </p>
         </motion.div>
 
-        {/* Experience card */}
-        <motion.div
-          variants={itemVariants}
-          className="glass-card"
-          style={{ padding: 'clamp(24px, 4vw, 48px)', position: 'relative', overflow: 'hidden' }}
-        >
-          {/* Background decoration */}
-          <div style={{
-            position: 'absolute', top: 0, right: 0,
-            width: 300, height: 300,
-            background: 'radial-gradient(circle, rgba(59, 130, 246, 0.05) 0%, transparent 70%)',
-            pointerEvents: 'none',
-          }} />
+        {/* Timeline Layout */}
+        <div className="relative border-l-2 border-indigo-500/20 pl-8 ml-4 md:ml-6 space-y-12">
+          {experience.map((exp, idx) => (
+            <motion.div
+              key={idx}
+              variants={itemVariants}
+              className="relative"
+            >
+              {/* Timeline Indicator Dot */}
+              <div 
+                className="absolute -left-[41px] top-1.5 w-6 h-6 rounded-full border-4 border-[var(--bg-primary)] shadow-lg flex items-center justify-center transition-all duration-300"
+                style={{ 
+                  background: 'linear-gradient(135deg, #3b82f6, #8b5cf6)',
+                  boxShadow: '0 0 10px rgba(99, 102, 241, 0.4)'
+                }}
+              />
 
-          {/* Top accent line */}
-          <div style={{
-            position: 'absolute', top: 0, left: 0, right: 0, height: 3,
-            background: 'linear-gradient(90deg, #3b82f6, #8b5cf6, #06b6d4)',
-            borderRadius: '16px 16px 0 0',
-          }} />
+              {/* Main Card */}
+              <div className="glass-card p-6 md:p-8 relative overflow-hidden transition-all duration-300 hover:shadow-xl">
+                {/* Accent Top Line */}
+                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500" />
 
-          {/* Job header */}
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 20, alignItems: 'flex-start', marginBottom: 36 }}>
-            <div style={{
-              width: 64, height: 64, borderRadius: 16,
-              background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(139, 92, 246, 0.2))',
-              border: '1px solid rgba(59, 130, 246, 0.3)',
-              display: 'flex', alignItems: 'center', justifyContent: 'center',
-              fontSize: '1.8rem', flexShrink: 0,
-            }}>
-              🏥
-            </div>
-            <div style={{ flex: 1 }}>
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12, alignItems: 'center', marginBottom: 8 }}>
-                <h3 style={{ fontFamily: 'DM Sans', fontWeight: 800, fontSize: 'clamp(1.2rem, 2.5vw, 1.6rem)', color: 'var(--text-primary)' }}>
-                  {exp.role}
-                </h3>
-                <span style={{
-                  padding: '4px 12px', borderRadius: 100, fontSize: '0.72rem',
-                  background: 'rgba(34, 197, 94, 0.1)', border: '1px solid rgba(34, 197, 94, 0.3)',
-                  color: '#22c55e', fontFamily: 'DM Sans', fontWeight: 700,
-                  letterSpacing: '0.1em', textTransform: 'uppercase',
-                }}>
-                  {exp.type}
-                </span>
-              </div>
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 16 }}>
-                <span style={{ display: 'flex', alignItems: 'center', gap: 6, color: '#3b82f6', fontFamily: 'DM Sans', fontWeight: 700, fontSize: '1rem' }}>
-                  <Briefcase size={15} />{exp.company}
-                </span>
-                <span style={{ display: 'flex', alignItems: 'center', gap: 6, color: 'var(--text-secondary)', fontSize: '0.9rem' }}>
-                  <MapPin size={14} />{exp.location}
-                </span>
-                <span style={{ display: 'flex', alignItems: 'center', gap: 6, color: 'var(--text-secondary)', fontSize: '0.9rem' }}>
-                  <Calendar size={14} />{exp.period}
-                </span>
-              </div>
-            </div>
-          </div>
-
-          <p style={{ color: 'var(--text-secondary)', marginBottom: 36, lineHeight: 1.7 }}>{exp.description}</p>
-
-          {/* Achievements */}
-          <div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 24 }}>
-              <TrendingUp size={18} color="#3b82f6" />
-              <h4 style={{ fontFamily: 'DM Sans', fontWeight: 700, color: 'var(--text-primary)', fontSize: '0.95rem' }}>
-                Key Achievements
-              </h4>
-            </div>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 16 }}>
-              {exp.achievements.map((achievement, i) => (
-                <motion.div
-                  key={i}
-                  variants={itemVariants}
-                  whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
-                  style={{
-                    padding: '20px',
-                    borderRadius: 14,
-                    background: `${colors[i % colors.length]}08`,
-                    border: `1px solid ${colors[i % colors.length]}20`,
-                    display: 'flex',
-                    gap: 16,
-                  }}
-                >
-                  <div style={{
-                    padding: '8px 12px',
-                    borderRadius: 10,
-                    background: `${colors[i % colors.length]}18`,
-                    border: `1px solid ${colors[i % colors.length]}35`,
-                    fontFamily: 'DM Sans',
-                    fontWeight: 800,
-                    fontSize: '1.1rem',
-                    color: colors[i % colors.length],
-                    whiteSpace: 'nowrap',
-                    height: 'fit-content',
-                    flexShrink: 0,
-                  }}>
-                    {achievement.metric}
-                  </div>
+                {/* Job Header */}
+                <div className="flex flex-wrap gap-4 items-start justify-between mb-6">
                   <div>
-                    <p style={{ fontFamily: 'DM Sans', fontWeight: 700, fontSize: '0.85rem', color: 'var(--text-primary)', marginBottom: 6 }}>
-                      {achievement.label}
-                    </p>
-                    <p style={{ fontSize: '0.82rem', color: 'var(--text-secondary)', lineHeight: 1.5 }}>
-                      {achievement.detail}
-                    </p>
+                    <h3 className="text-xl md:text-2xl font-bold text-[var(--text-primary)]">
+                      {exp.role}
+                    </h3>
+                    <div className="flex flex-wrap gap-x-4 gap-y-2 mt-2 text-sm text-[var(--text-secondary)]">
+                      <span className="flex items-center gap-1.5 text-indigo-400 font-semibold">
+                        <Briefcase size={16} /> {exp.company}
+                      </span>
+                      <span className="flex items-center gap-1.5">
+                        <MapPin size={15} /> {exp.location}
+                      </span>
+                      <span className="flex items-center gap-1.5">
+                        <Calendar size={15} /> {exp.period}
+                      </span>
+                    </div>
                   </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </motion.div>
+                  <span className="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-emerald-500/10 border border-emerald-500/30 text-emerald-400">
+                    {exp.type}
+                  </span>
+                </div>
 
-        {/* Timeline indicator */}
-        <motion.div variants={itemVariants} style={{ marginTop: 40, display: 'flex', alignItems: 'center', gap: 12 }}>
-          <div style={{ flex: 1, height: 1, background: 'var(--border)' }} />
-          <div style={{
-            display: 'flex', alignItems: 'center', gap: 8,
-            padding: '10px 20px', borderRadius: 100,
-            background: 'var(--glass)', border: '1px solid var(--glass-border)',
-            fontSize: '0.8rem', color: 'var(--text-secondary)',
-            fontFamily: 'DM Sans', fontWeight: 600,
-          }}>
-            <CheckCircle size={14} color="#22c55e" />
-            Currently at Medicover Hospitals
+                <p className="text-[var(--text-secondary)] leading-relaxed mb-8">
+                  {exp.description}
+                </p>
+
+                {/* Measurable Achievements Grid */}
+                <div>
+                  <div className="flex items-center gap-2 mb-6">
+                    <TrendingUp size={18} className="text-indigo-400" />
+                    <h4 className="font-bold text-sm text-[var(--text-primary)] uppercase tracking-wider">
+                      Measurable Impact & Achievements
+                    </h4>
+                  </div>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {exp.achievements.map((achievement, i) => (
+                      <motion.div
+                        key={i}
+                        whileHover={{ y: -3 }}
+                        className="p-5 rounded-xl border flex gap-4 transition-all duration-200"
+                        style={{
+                          background: 'rgba(255, 255, 255, 0.01)',
+                          borderColor: 'var(--border)',
+                          boxShadow: '0 4px 20px rgba(0,0,0,0.05)'
+                        }}
+                      >
+                        <div 
+                          className="px-3 py-1.5 rounded-lg font-extrabold text-sm flex items-center justify-center self-start whitespace-nowrap"
+                          style={{
+                            background: `${colors[i % colors.length]}15`,
+                            border: `1px solid ${colors[i % colors.length]}30`,
+                            color: colors[i % colors.length]
+                          }}
+                        >
+                          {achievement.metric}
+                        </div>
+                        <div>
+                          <p className="font-bold text-sm text-[var(--text-primary)] mb-1">
+                            {achievement.label}
+                          </p>
+                          <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
+                            {achievement.detail}
+                          </p>
+                        </div>
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Timeline Status */}
+        <motion.div variants={itemVariants} className="mt-12 flex items-center gap-6 justify-center">
+          <div className="h-[1px] bg-[var(--border)] flex-1 hidden md:block" />
+          <div className="flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-[var(--glass)] border border-[var(--glass-border)] text-sm text-[var(--text-secondary)] font-semibold">
+            <CheckCircle size={16} className="text-emerald-500 animate-pulse" />
+            Currently scaling solutions at Medicover Hospitals
           </div>
-          <div style={{ flex: 1, height: 1, background: 'var(--border)' }} />
+          <div className="h-[1px] bg-[var(--border)] flex-1 hidden md:block" />
         </motion.div>
       </motion.div>
     </section>

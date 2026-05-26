@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { useInView } from '../hooks/useInView';
 import { skills } from '../data/portfolio';
+import SkillCard from './SkillCard';
 
 export default function Skills() {
   const [ref, inView] = useInView();
@@ -63,82 +64,13 @@ export default function Skills() {
             gap: 24,
           }}>
             {skills.map((category, i) => (
-              <motion.div
+              <SkillCard
                 key={category.category}
-                variants={cardVariants}
-                whileHover={{ y: -6, transition: { duration: 0.2 } }}
-                className="glass-card"
-                style={{ padding: '28px', cursor: 'default', overflow: 'hidden', position: 'relative' }}
-              >
-                {/* Card accent */}
-                <div style={{
-                  position: 'absolute',
-                  top: 0,
-                  left: 0,
-                  right: 0,
-                  height: 3,
-                  background: `linear-gradient(90deg, ${category.color}, transparent)`,
-                  borderRadius: '16px 16px 0 0',
-                }} />
-
-                {/* Category header */}
-                <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 24 }}>
-                  <div style={{
-                    width: 48, height: 48,
-                    borderRadius: 14,
-                    background: `${category.color}18`,
-                    border: `1px solid ${category.color}35`,
-                    display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    fontSize: '1.4rem',
-                  }}>
-                    {category.icon}
-                  </div>
-                  <div>
-                    <h3 style={{
-                      fontFamily: 'Syne, sans-serif',
-                      fontWeight: 700,
-                      fontSize: '1rem',
-                      color: 'var(--text-primary)',
-                    }}>
-                      {category.category}
-                    </h3>
-                    <p style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', marginTop: 2 }}>
-                      {category.items.length} technologies
-                    </p>
-                  </div>
-                </div>
-
-                {/* Skill chips */}
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
-                  {category.items.map((skill, j) => (
-                    <motion.span
-                      key={skill}
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      animate={inView ? { opacity: 1, scale: 1 } : {}}
-                      transition={{ delay: i * 0.1 + j * 0.05 + 0.3 }}
-                      style={{
-                        padding: '6px 14px',
-                        borderRadius: 100,
-                        fontSize: '0.78rem',
-                        fontFamily: 'Syne, sans-serif',
-                        fontWeight: 600,
-                        background: `${category.color}12`,
-                        border: `1px solid ${category.color}25`,
-                        color: category.color,
-                        transition: 'all 0.2s',
-                        cursor: 'default',
-                      }}
-                      whileHover={{
-                        background: `${category.color}25`,
-                        border: `1px solid ${category.color}50`,
-                        scale: 1.05,
-                      }}
-                    >
-                      {skill}
-                    </motion.span>
-                  ))}
-                </div>
-              </motion.div>
+                category={category.category}
+                items={category.items}
+                color={category.color}
+                icon={category.icon}
+              />
             ))}
           </div>
 

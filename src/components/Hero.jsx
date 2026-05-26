@@ -152,7 +152,7 @@ export default function Hero() {
               <ChevronRight size={20} />
             </a>
             <a
-              href="/Akhilesh_Resume.pdf"
+              href="/Akhilesh_1.pdf"
               className="icon-btn p-2 rounded-full bg-white/5 hover:bg-white/10 transition flex items-center justify-center"
               download
               title="Resume"
