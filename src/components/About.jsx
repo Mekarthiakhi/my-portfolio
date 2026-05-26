@@ -235,7 +235,7 @@ I specialize in React.js and Node.js, building reliable, maintainable, and effic
               <p style={{ fontWeight: 700 }}>{education.degree}</p>
               <p style={{ fontSize: "0.85rem" }}>{education.university}</p>
               <p style={{ fontSize: "0.8rem", color: "var(--text-secondary)" }}>
-                {education.period} • GPA: {education.gpa}
+                {education.period}
               </p>
             </motion.div>
 
