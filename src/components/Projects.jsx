@@ -6,41 +6,32 @@ import { FaGithub } from "react-icons/fa";
 import { ExternalLink, BookOpen, X, Layers, CheckCircle2, Cpu, TrendingUp } from "lucide-react";
 
 const caseStudies = {
-  "Real-Time Notification System": {
-    summary: "High-throughput token delivery gateway delivering instant notifications to medical personnel across desktop and mobile.",
-    problem: "Legacy polling created massive server overhead and delayed life-critical notifications by up to 5 minutes.",
-    architecture: "Event-driven pub-sub engine using Node.js + WebSockets for active channels and Firebase FCM for background workers.",
-    optimizations: "Connection pooling, batch scheduling, and service worker token compression — reducing delivery overhead by 42%.",
-    challenges: "Handling background notifications reliably across strict Android/iOS power management profiles and sleep states.",
-    impact: "100% delivery rate for critical alerts; latency reduced from minutes to sub-second (<250ms).",
-    role: "Lead Systems Engineer — Designed the notification dispatch scheduler and integrated background service worker push-receivers."
+  "Auto Job Apply Bot": {
+    summary: "High-performance automated job application engine built with TypeScript and Puppeteer to streamline the job hunting workflow.",
+    problem: "Manual job applications are repetitive, slow, and take hundreds of hours of manual copy-pasting, making it hard to apply at scale.",
+    architecture: "Modular TypeScript application using Puppeteer for automated browser control, with support for custom configuration profiles.",
+    optimizations: "Request interception to block image/stylesheet downloads, cutting network bandwidth and execution speed by over 60%.",
+    challenges: "Bypassing bot detection measures and parsing highly dynamic, nested form layouts across disparate job portals.",
+    impact: "Successfully automates application submission under 15 seconds per job, reducing manual tracking effort by 90%.",
+    role: "Lead Engineer — Designed the browser automation flows, form selector parser, and state persistence manager."
   },
-  "Hospital Management System": {
-    summary: "Robust admin panel automating medical flow, billing transactions, and operational logs.",
-    problem: "Manual queue entries created massive registration bottlenecks causing client delays and human error.",
-    architecture: "Modular PHP backend with MySQL relational schema, transitioned to service-oriented layers.",
-    optimizations: "Optimized indexing and denormalized tables for high-frequency queries, cutting billing load time by 30%.",
-    challenges: "Assuring zero downtime and complete data integrity during migration of legacy patient archives.",
-    impact: "Reduced billing registration bottleneck by ~40%, increasing patient intake velocity significantly.",
-    role: "Lead Full-Stack Developer — Refactored SQL schema and implemented background billing automation pipeline."
+  "DSA Practice Visualizer": {
+    summary: "Interactive educational platform visualizing complex call stacks, recursion trees, and algorithm execution flows.",
+    problem: "Abstract DSA concepts like recursion, backtracking, and tree traversals are difficult to debug and visualize for students.",
+    architecture: "React SPA utilizing Framer Motion for execution step animations, powered by a sandboxed code runner.",
+    optimizations: "Virtual DOM diffing optimizations to render highly complex trees and graphs at 60 FPS during fast animation playback.",
+    challenges: "Creating a step-by-step state capture hook that accurately snapshots recursion depths and variable frames.",
+    impact: "Delivers an intuitive call stack visualizer helping developers solve complex algorithmic exercises 50% faster.",
+    role: "Frontend Architect — Crafted the interactive node-link graph layouts and custom step-execution hooks."
   },
-  "Patient Portal Dashboard": {
-    summary: "Secure patient-centric portal delivering instantly downloadable radiology, pathology, and lab diagnostic reports.",
-    problem: "Physical report retrieval required clinic visits, increasing waiting room congestion and delaying patient care.",
-    architecture: "Decoupled React.js frontend authenticated via OTP, backed by a robust Node.js API.",
-    optimizations: "Client-side rendering with optimistic UI updates and static asset caching for near-instant navigation.",
-    challenges: "Ensuring HIPAA compliance and securing sensitive medical PDF assets at rest and in transit.",
-    impact: "Eliminated physical pick-up waiting times by 100%; increased secure digital delivery efficiency.",
-    role: "Frontend Architect — Built the responsive dashboard UI and engineered securely signed PDF retrieval APIs."
-  },
-  "URL Shortener": {
-    summary: "High-performance microservice for lightning-fast URL redirects with minimal resource overhead.",
-    problem: "Traditional SQL lookups caused high latency and database CPU spikes under viral traffic.",
-    architecture: "Express.js REST microservice + Redis cache write-through buffer on top of MySQL persistent store.",
-    optimizations: "Aggressive Redis cache eviction strategies yielding sub-millisecond redirect processing.",
-    challenges: "Resolving race conditions on rapid analytic counts and horizontal scale-out spikes.",
-    impact: "Redirect resolution time brought down to <2ms under stress test conditions.",
-    role: "Backend Engineer — Set up Redis caching layer, optimized DB indexes, and built the analytics ingestion queue."
+  "Compliance Graph Visualizer": {
+    summary: "Interactive force-directed node relationship graph mapping medical compliance rules and hierarchical structures.",
+    problem: "Healthcare compliance systems contain thousands of nested, complex legal rules that are hard to audit manually.",
+    architecture: "D3.js force layout integrated into a React SPA, rendering interactive SVG nodes representing compliance items.",
+    optimizations: "Quadtree optimization for fast collision detection in force layouts, rendering 500+ nodes smoothly on mobile browsers.",
+    challenges: "Maintaining SVG scale-to-fit coordinates and smooth zooming/panning transitions on smaller viewports.",
+    impact: "Reduced audit times for compliance specialists by 70%, making rule conflicts visually obvious.",
+    role: "Lead UI Developer — Designed the D3 force-directed canvas, search indices, and path-tracing logic."
   },
   "Real-Time Chat App": {
     summary: "Responsive instant messaging application with real-time persistence and presence tracking.",
@@ -50,15 +41,6 @@ const caseStudies = {
     challenges: "Maintaining message consistency and typing state during intermittent cellular dropouts.",
     impact: "Seamless real-time syncing with under 50ms message propagation time.",
     role: "Frontend Developer — Engineered Socket.io state manager, presence-indicator tracking, and chat lists."
-  },
-  "E-Commerce Platform": {
-    summary: "Modern store with shopping cart, fast search, and secure payment processing.",
-    problem: "Slow checkout funnels and layout shifts caused user friction and lower conversion rates.",
-    architecture: "React context-based global store + Express.js backend API + MySQL.",
-    optimizations: "Image compression pipelines and query optimizations for dynamic inventory filtering.",
-    challenges: "Integrating third-party payment gateways while maintaining clean state validation rollback rules.",
-    impact: "Reduced average checkout load speed by 35% with a polished user flow.",
-    role: "Full-Stack Engineer — Built cart manager, catalog components, and integrated secure payment modules."
   },
   "DealScout AI Dashboard": {
     summary: "High-performance web dashboard displaying real-time deals with AI product comparisons.",
@@ -78,19 +60,43 @@ const caseStudies = {
     impact: "Reduced loan tracking inaccuracies to 0% and dramatically simplified account audits.",
     role: "Frontend Developer — Built dynamic financial calculators, dashboard statistics, and dark mode features."
   },
+  "Real-Time Notification System": {
+    summary: "High-throughput token delivery gateway delivering instant notifications to medical personnel across desktop and mobile.",
+    problem: "Legacy polling created massive server overhead and delayed life-critical notifications by up to 5 minutes.",
+    architecture: "Event-driven pub-sub engine using Node.js + WebSockets for active channels and Firebase FCM for background workers.",
+    optimizations: "Connection pooling, batch scheduling, and service worker token compression — reducing delivery overhead by 42%.",
+    challenges: "Handling background notifications reliably across strict Android/iOS power management profiles and sleep states.",
+    impact: "100% delivery rate for critical alerts; latency reduced from minutes to sub-second (<250ms).",
+    role: "Lead Systems Engineer — Designed the notification dispatch scheduler and integrated background service worker push-receivers."
+  },
+  "Patient Portal Dashboard": {
+    summary: "Secure patient-centric portal delivering instantly downloadable radiology, pathology, and lab diagnostic reports.",
+    problem: "Physical report retrieval required clinic visits, increasing waiting room congestion and delaying patient care.",
+    architecture: "Decoupled React.js frontend authenticated via OTP, backed by a robust Node.js API.",
+    optimizations: "Client-side rendering with optimistic UI updates and static asset caching for near-instant navigation.",
+    challenges: "Ensuring HIPAA compliance and securing sensitive medical PDF assets at rest and in transit.",
+    impact: "Eliminated physical pick-up waiting times by 100%; increased secure digital delivery efficiency.",
+    role: "Frontend Architect — Built the responsive dashboard UI and engineered securely signed PDF retrieval APIs."
+  }
 };
 
-const filters = ["All", "Full Stack", "Backend", "Frontend", "Healthcare", "Real-Time"];
+const filters = ["All", "Full Stack", "Backend", "Frontend", "Automation"];
 
 const matchFilter = (p, f) => {
   if (f === "All") return true;
-  if (f === "Healthcare") return ["Hospital Management System","Patient Portal Dashboard","Real-Time Notification System"].includes(p.title);
-  if (f === "Real-Time") return p.title.includes("Notification") || p.title.includes("Chat");
+  if (f === "Automation") return p.category?.toLowerCase().includes("automation") || p.tech.some(t => t.toLowerCase().includes("puppeteer") || t.toLowerCase().includes("automation"));
   return p.category === f || p.tech.some(t => t.toLowerCase().includes(f.toLowerCase()));
 };
 
-const cv = { hidden:{opacity:0}, visible:{opacity:1,transition:{staggerChildren:0.07}} };
-const cardV = { hidden:{opacity:0,y:28}, visible:{opacity:1,y:0,transition:{duration:0.45}} };
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1, transition: { staggerChildren: 0.08 } }
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 35 },
+  visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 80, damping: 15 } }
+};
 
 export default function Projects() {
   const [ref, inView] = useInView();
@@ -101,121 +107,181 @@ export default function Projects() {
   return (
     <section
       id="projects"
-      style={{
-        background: 'var(--bg-secondary)',
-        paddingTop: 'clamp(80px, 10vw, 130px)',
-        paddingBottom: 'clamp(80px, 10vw, 130px)',
-        overflow: 'hidden',
-        position: 'relative',
-      }}
+      className="relative py-24 sm:py-32 w-full overflow-hidden bg-[#030712]"
     >
-      <div className="absolute top-1/3 left-0 pointer-events-none" style={{ width:400,height:400,background:'radial-gradient(circle,rgba(99,102,241,0.05) 0%,transparent 70%)' }} />
-      <div className="absolute bottom-0 right-0 pointer-events-none"   style={{ width:400,height:400,background:'radial-gradient(circle,rgba(6,182,212,0.05) 0%,transparent 70%)' }} />
+      {/* Visual glowing stars and radial overlays */}
+      <div className="absolute top-1/3 left-0 w-[400px] h-[400px] bg-violet-600/5 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-cyan-600/5 rounded-full blur-[100px] pointer-events-none" />
 
-      <div className="container" style={{ position:'relative',zIndex:1 }}>
-        <motion.div ref={ref} variants={cv} initial="hidden" animate={inView?"visible":"hidden"}>
-
-          {/* Header */}
-          <motion.div variants={cardV} style={{ marginBottom:56 }}>
-            <div className="section-tag"><span>●</span> Featured Projects</div>
-            <h2 className="section-title">Things I've <span className="gradient-text">Shipped</span></h2>
-            <p className="section-subtitle">Production-grade systems built with performance, security, and scalability.</p>
+      <div className="max-w-6xl mx-auto px-6 relative z-10">
+        <motion.div ref={ref} variants={containerVariants} initial="hidden" animate={inView ? "visible" : "hidden"}>
+          
+          {/* Section Title */}
+          <motion.div variants={cardVariants} className="mb-14 text-left">
+            <div className="inline-flex items-center gap-2 text-xs font-mono font-bold tracking-[0.25em] uppercase text-cyan-400 mb-3">
+              <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
+              03 / Digital Assets
+            </div>
+            <h2 className="text-3xl sm:text-5xl font-black text-white leading-tight tracking-tight mb-5">
+              Production <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 via-cyan-400 to-emerald-400">Deployments.</span>
+            </h2>
+            <p className="text-sm sm:text-base text-slate-400 max-w-xl leading-relaxed">
+              Open-source modules, automation tools, and full-scale web platforms built with precision.
+            </p>
           </motion.div>
 
-          {/* Filters */}
-          <motion.div variants={cardV} style={{ display:'flex',flexWrap:'wrap',gap:10,marginBottom:44,paddingBottom:28,borderBottom:'1px solid var(--border)' }}>
+          {/* Filter Toolbar */}
+          <motion.div 
+            variants={cardVariants} 
+            className="flex flex-wrap gap-2.5 mb-10 pb-6 border-b border-white/5"
+          >
             {filters.map(f => (
-              <button key={f} onClick={() => setActiveFilter(f)}
-                style={{
-                  padding:'8px 20px',borderRadius:999,fontSize:'0.72rem',fontWeight:700,
-                  letterSpacing:'0.05em',transition:'all 0.2s',cursor:'pointer',
-                  ...(activeFilter===f
-                    ? { background:'linear-gradient(135deg,#3b82f6,#8b5cf6)',color:'#fff',boxShadow:'0 4px 18px rgba(99,102,241,0.3)',border:'none' }
-                    : { background:'var(--glass)',border:'1px solid var(--glass-border)',color:'var(--text-secondary)' }
-                  ),
-                }}>{f}</button>
+              <button 
+                key={f} 
+                onClick={() => setActiveFilter(f)}
+                className={`px-5 py-2 rounded-full text-xs font-bold tracking-widest uppercase transition-all cursor-pointer ${
+                  activeFilter === f
+                    ? 'bg-gradient-to-r from-violet-600 to-cyan-500 text-white shadow-lg shadow-violet-950/40 border border-violet-400/20 scale-[1.02]'
+                    : 'bg-white/5 border border-white/5 text-slate-400 hover:text-white hover:border-white/10'
+                }`}
+              >
+                {f}
+              </button>
             ))}
           </motion.div>
 
-          {/* Grid */}
+          {/* Project Grid */}
           <AnimatePresence mode="wait">
             <motion.div
               key={activeFilter}
-              initial={{opacity:0,y:14}} animate={{opacity:1,y:0}} exit={{opacity:0,y:-14}} transition={{duration:0.22}}
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -15 }}
+              transition={{ duration: 0.25 }}
               className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
             >
               {filtered.map((project, idx) => {
-                const featured = idx===0 && activeFilter==="All";
+                const isFeatured = project.title.includes("Auto Job") || project.title.includes("DSA Practice");
+                const bobAnimation = idx % 2 === 0 ? "animate-drift-1" : "animate-drift-2";
+                
                 return (
                   <motion.div
                     key={project.title}
-                    variants={cardV}
-                    whileHover={{y:-5,transition:{duration:0.18}}}
-                    className="glass-card"
+                    variants={cardVariants}
+                    whileHover={{ y: -6 }}
+                    className={`zero-g-glass rounded-3xl p-6 relative overflow-hidden flex flex-col justify-between transition-all duration-300 ${bobAnimation} hover:neon-glow-violet`}
                     style={{
-                      padding:'28px 28px',position:'relative',overflow:'hidden',
-                      display:'flex',flexDirection:'column',
-                      ...(featured ? { gridColumn:'span 2' } : {}),
+                      boxShadow: '0 8px 32px 0 rgba(0, 0, 0, 0.2)',
                     }}
-                    onMouseEnter={e=>{e.currentTarget.style.boxShadow=`0 20px 48px ${project.color}18`;}}
-                    onMouseLeave={e=>{e.currentTarget.style.boxShadow='none';}}
                   >
-                    <div style={{ position:'absolute',top:0,left:0,right:0,height:3,background:`linear-gradient(90deg,${project.color},transparent)` }} />
+                    {/* Top Accent Strip */}
+                    <span 
+                      className="absolute top-0 left-0 right-0 h-[2px]" 
+                      style={{ background: `linear-gradient(90deg, ${project.color}, transparent)` }}
+                    />
 
-                    {/* Top: icon + links */}
-                    <div style={{ display:'flex',alignItems:'flex-start',justifyContent:'space-between',marginBottom:20 }}>
-                      <div style={{ width:46,height:46,borderRadius:13,display:'flex',alignItems:'center',justifyContent:'center',fontSize:22,background:`${project.color}12`,border:`1px solid ${project.color}28`,flexShrink:0 }}>
-                        {project.icon}
-                      </div>
-                      <div style={{ display:'flex',gap:8 }}>
-                        <a href={project.github} target="_blank" rel="noopener noreferrer" title="GitHub" className="icon-btn" style={{ width:36,height:36 }}>
-                          <FaGithub size={14} />
-                        </a>
-                        {project.demo && project.demo!=='#' && (
-                          <a href={project.demo} target="_blank" rel="noopener noreferrer" title="Live Demo"
-                            style={{ width:36,height:36,borderRadius:8,display:'flex',alignItems:'center',justifyContent:'center',background:`${project.color}12`,border:`1px solid ${project.color}28`,color:project.color }}>
-                            <ExternalLink size={13} />
+                    <div>
+                      {/* Top Bar: Icon + External Links */}
+                      <div className="flex justify-between items-start mb-5">
+                        <div 
+                          className="w-11 h-11 rounded-2xl flex items-center justify-center text-xl"
+                          style={{
+                            backgroundColor: `${project.color}12`,
+                            border: `1px solid ${project.color}25`
+                          }}
+                        >
+                          {project.icon}
+                        </div>
+                        
+                        <div className="flex gap-2">
+                          <a 
+                            href={project.github} 
+                            target="_blank" 
+                            rel="noopener noreferrer" 
+                            title="GitHub Repository" 
+                            className="w-8 h-8 rounded-xl bg-white/5 border border-white/5 hover:border-white/10 flex items-center justify-center text-slate-400 hover:text-white transition-all"
+                          >
+                            <FaGithub size={14} />
                           </a>
+                          {project.demo && project.demo !== '#' && (
+                            <a 
+                              href={project.demo} 
+                              target="_blank" 
+                              rel="noopener noreferrer" 
+                              title="Live Deployment"
+                              className="w-8 h-8 rounded-xl flex items-center justify-center transition-all"
+                              style={{
+                                backgroundColor: `${project.color}15`,
+                                border: `1px solid ${project.color}30`,
+                                color: project.color
+                              }}
+                            >
+                              <ExternalLink size={13} />
+                            </a>
+                          )}
+                        </div>
+                      </div>
+
+                      {/* Title + Badges */}
+                      <div className="flex flex-wrap items-center gap-2 mb-3">
+                        <h3 className="text-base font-bold text-white tracking-wide">{project.title}</h3>
+                        {isFeatured && (
+                          <span className="px-2 py-0.5 rounded text-[8px] font-mono font-bold uppercase tracking-wider bg-amber-500/10 border border-amber-500/35 text-amber-400">
+                            ★ Key Repo
+                          </span>
+                        )}
+                        {project.title.toLowerCase().includes("graph") && (
+                          <span className="px-2 py-0.5 rounded text-[8px] font-mono font-bold uppercase tracking-wider bg-violet-500/10 border border-violet-500/35 text-violet-400">
+                            Hologram
+                          </span>
                         )}
                       </div>
-                    </div>
 
-                    {/* Title + badges */}
-                    <div style={{ display:'flex',flexWrap:'wrap',alignItems:'center',gap:8,marginBottom:10 }}>
-                      <h3 style={{ fontSize:'1rem',fontWeight:800,color:'var(--text-primary)' }}>{project.title}</h3>
-                      {featured && (
-                        <span style={{ padding:'3px 8px',borderRadius:5,fontSize:'0.62rem',fontWeight:800,textTransform:'uppercase',background:'rgba(245,158,11,0.1)',border:'1px solid rgba(245,158,11,0.25)',color:'#fbbf24' }}>★ Featured</span>
-                      )}
-                      {(project.title.includes("Hospital")||project.title.includes("Patient")||project.title.includes("Notification")) && (
-                        <span style={{ padding:'3px 8px',borderRadius:5,fontSize:'0.62rem',fontWeight:800,textTransform:'uppercase',background:'rgba(239,68,68,0.08)',border:'1px solid rgba(239,68,68,0.2)',color:'#f87171' }}>Healthcare</span>
-                      )}
-                    </div>
+                      {/* Project Description */}
+                      <p className="text-xs text-slate-400 leading-relaxed mb-5">
+                        {project.description}
+                      </p>
 
-                    <p style={{ fontSize:'0.85rem',color:'var(--text-secondary)',lineHeight:1.75,marginBottom:18,flex:1 }}>{project.description}</p>
-
-                    {/* Feature chips */}
-                    <div style={{ display:'flex',flexWrap:'wrap',gap:7,marginBottom:20 }}>
-                      {project.features.map(f => (
-                        <span key={f} style={{ fontSize:'0.68rem',padding:'4px 10px',borderRadius:6,fontWeight:600,background:'rgba(255,255,255,0.04)',border:'1px solid rgba(255,255,255,0.07)',color:'var(--text-secondary)' }}>{f}</span>
-                      ))}
-                    </div>
-
-                    {/* Footer: tech + case study */}
-                    <div style={{ display:'flex',flexWrap:'wrap',alignItems:'center',justifyContent:'space-between',gap:12,paddingTop:16,borderTop:'1px solid var(--border)' }}>
-                      <div style={{ display:'flex',flexWrap:'wrap',gap:5 }}>
-                        {project.tech.map(t => (
-                          <span key={t} style={{ fontSize:'0.65rem',fontWeight:700,padding:'3px 8px',borderRadius:5,background:`${project.color}08`,border:`1px solid ${project.color}1a`,color:project.color }}>{t}</span>
+                      {/* Feature Checklist Chips */}
+                      <div className="flex flex-wrap gap-1.5 mb-6">
+                        {project.features.map(f => (
+                          <span 
+                            key={f} 
+                            className="text-[9px] font-semibold px-2.5 py-1 rounded bg-white/5 border border-white/5 text-slate-400 uppercase tracking-wider"
+                          >
+                            {f}
+                          </span>
                         ))}
                       </div>
+                    </div>
+
+                    {/* Card Footer: Tech Icons + Case Study Trigger */}
+                    <div className="flex items-center justify-between gap-4 pt-4 border-t border-white/5 mt-auto">
+                      <div className="flex flex-wrap gap-1">
+                        {project.tech.slice(0, 3).map(t => (
+                          <span 
+                            key={t} 
+                            className="text-[9px] font-bold font-mono px-2 py-0.5 rounded"
+                            style={{
+                              backgroundColor: `${project.color}08`,
+                              border: `1px solid ${project.color}15`,
+                              color: project.color
+                            }}
+                          >
+                            {t}
+                          </span>
+                        ))}
+                      </div>
+                      
                       <button
                         onClick={() => setCaseStudy(project.title)}
-                        style={{ display:'flex',alignItems:'center',gap:5,fontSize:'0.78rem',fontWeight:700,color:'#818cf8',background:'none',cursor:'pointer' }}
-                        onMouseEnter={e=>{e.currentTarget.style.color='var(--text-primary)';}}
-                        onMouseLeave={e=>{e.currentTarget.style.color='#818cf8';}}
+                        className="flex items-center gap-1.5 text-xs font-bold text-violet-400 hover:text-white transition-colors cursor-pointer"
                       >
-                        <BookOpen size={13} /> Case Study
+                        <BookOpen size={12} /> 
+                        <span className="font-mono uppercase tracking-widest text-[9px]">Case Study</span>
                       </button>
                     </div>
+
                   </motion.div>
                 );
               })}
@@ -224,86 +290,100 @@ export default function Projects() {
         </motion.div>
       </div>
 
-      {/* Case Study Slide-Over */}
+      {/* Futuristic Case Study Slide-Over Panel */}
       <AnimatePresence>
         {caseStudy && (
           <>
-            <motion.div initial={{opacity:0}} animate={{opacity:1}} exit={{opacity:0}}
-              onClick={()=>setCaseStudy(null)}
-              style={{ position:'fixed',inset:0,background:'rgba(0,0,0,0.65)',backdropFilter:'blur(4px)',zIndex:50,cursor:'pointer' }}
+            {/* Backdrop Blur overlay */}
+            <motion.div 
+              initial={{ opacity: 0 }} 
+              animate={{ opacity: 1 }} 
+              exit={{ opacity: 0 }}
+              onClick={() => setCaseStudy(null)}
+              className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 cursor-pointer"
             />
+            
+            {/* Slide-over Container */}
             <motion.div
-              initial={{x:'100%'}} animate={{x:0}} exit={{x:'100%'}}
-              transition={{type:'spring',damping:28,stiffness:200}}
-              style={{
-                position:'fixed',top:0,right:0,height:'100%',zIndex:51,
-                width:'min(640px,100vw)',overflowY:'auto',
-                background:'var(--bg-card)',borderLeft:'1px solid var(--glass-border)',
-                boxShadow:'-20px 0 60px rgba(0,0,0,0.4)',
-              }}
+              initial={{ x: '100%' }} 
+              animate={{ x: 0 }} 
+              exit={{ x: '100%' }}
+              transition={{ type: 'spring', damping: 26, stiffness: 200 }}
+              className="fixed top-0 right-0 h-full z-[55] w-full max-w-xl overflow-y-auto bg-[#050a15] border-l border-white/10 shadow-2xl shadow-black/80 flex flex-col"
             >
-              {/* Panel header */}
-              <div style={{ position:'sticky',top:0,display:'flex',alignItems:'center',justifyContent:'space-between',padding:'20px 28px',background:'var(--bg-card)',borderBottom:'1px solid var(--border)',zIndex:1 }}>
-                <div style={{ display:'flex',alignItems:'center',gap:12 }}>
-                  <span style={{ fontSize:24 }}>{projects.find(p=>p.title===caseStudy)?.icon}</span>
-                  <h3 style={{ fontSize:'0.95rem',fontWeight:800,color:'var(--text-primary)' }}>{caseStudy}</h3>
+              {/* Header */}
+              <div className="sticky top-0 z-10 flex items-center justify-between px-6 py-5 bg-[#050a15]/90 backdrop-blur-md border-b border-white/10">
+                <div className="flex items-center gap-3">
+                  <span className="text-2xl">{projects.find(p => p.title === caseStudy)?.icon}</span>
+                  <h3 className="text-sm font-bold text-white uppercase tracking-wider font-mono">{caseStudy}</h3>
                 </div>
-                <button onClick={()=>setCaseStudy(null)}
-                  style={{ display:'flex',alignItems:'center',gap:6,padding:'7px 14px',borderRadius:8,fontSize:'0.75rem',fontWeight:700,background:'var(--glass)',border:'1px solid var(--glass-border)',color:'var(--text-secondary)',cursor:'pointer' }}>
-                  <X size={13} /> Close
+                <button 
+                  onClick={() => setCaseStudy(null)}
+                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold tracking-widest bg-white/5 border border-white/5 hover:border-white/10 text-slate-300 hover:text-white transition-colors cursor-pointer"
+                >
+                  <X size={12} /> CLOSE
                 </button>
               </div>
 
-              {/* Panel body */}
+              {/* Case Study Details */}
               {caseStudies[caseStudy] && (
-                <div style={{ padding:'28px 28px',display:'flex',flexDirection:'column',gap:24,fontSize:'0.875rem',lineHeight:1.75,color:'var(--text-secondary)' }}>
+                <div className="p-6 sm:p-8 flex flex-col gap-6 text-xs sm:text-sm text-slate-400 leading-relaxed overflow-y-auto">
+                  
+                  {/* Summary */}
                   <div>
-                    <div style={{ display:'flex',alignItems:'center',gap:8,marginBottom:10 }}>
-                      <CheckCircle2 size={14} style={{ color:'#818cf8' }} />
-                      <h4 style={{ fontSize:'0.65rem',fontWeight:800,textTransform:'uppercase',letterSpacing:'0.18em',color:'var(--text-primary)' }}>Executive Summary</h4>
+                    <div className="flex items-center gap-2 mb-2.5">
+                      <CheckCircle2 size={14} className="text-violet-400" />
+                      <h4 className="text-[10px] uppercase font-mono tracking-widest text-white font-bold">Executive Overview</h4>
                     </div>
                     <p>{caseStudies[caseStudy].summary}</p>
                   </div>
 
-                  <div style={{ padding:'18px 20px',borderRadius:12,background:'rgba(239,68,68,0.05)',border:'1px solid rgba(239,68,68,0.15)' }}>
-                    <h4 style={{ fontSize:'0.65rem',fontWeight:800,textTransform:'uppercase',letterSpacing:'0.18em',color:'#f87171',marginBottom:8 }}>The Problem Solved</h4>
-                    <p>{caseStudies[caseStudy].problem}</p>
+                  {/* Problem statement (danger backdrop) */}
+                  <div className="p-5 rounded-2xl bg-rose-500/5 border border-rose-500/15">
+                    <h4 className="text-[10px] uppercase font-mono tracking-widest text-rose-400 font-bold mb-2">The Architecture Pain Point</h4>
+                    <p className="text-slate-300">{caseStudies[caseStudy].problem}</p>
                   </div>
 
+                  {/* System Architecture */}
                   <div>
-                    <div style={{ display:'flex',alignItems:'center',gap:8,marginBottom:10 }}>
-                      <Layers size={14} style={{ color:'#818cf8' }} />
-                      <h4 style={{ fontSize:'0.65rem',fontWeight:800,textTransform:'uppercase',letterSpacing:'0.18em',color:'var(--text-primary)' }}>System Architecture</h4>
+                    <div className="flex items-center gap-2 mb-2.5">
+                      <Layers size={14} className="text-violet-400" />
+                      <h4 className="text-[10px] uppercase font-mono tracking-widest text-white font-bold">Structural Blueprint</h4>
                     </div>
                     <p>{caseStudies[caseStudy].architecture}</p>
                   </div>
 
-                  <div style={{ padding:'18px 20px',borderRadius:12,background:'rgba(16,185,129,0.05)',border:'1px solid rgba(16,185,129,0.15)' }}>
-                    <h4 style={{ fontSize:'0.65rem',fontWeight:800,textTransform:'uppercase',letterSpacing:'0.18em',color:'#34d399',marginBottom:8 }}>Performance Optimizations</h4>
-                    <p>{caseStudies[caseStudy].optimizations}</p>
+                  {/* Performance Optimizations (success backdrop) */}
+                  <div className="p-5 rounded-2xl bg-emerald-500/5 border border-emerald-500/15">
+                    <h4 className="text-[10px] uppercase font-mono tracking-widest text-emerald-400 font-bold mb-2">Telemetry Optimizations</h4>
+                    <p className="text-slate-300">{caseStudies[caseStudy].optimizations}</p>
                   </div>
 
+                  {/* Technical Challenges */}
                   <div>
-                    <div style={{ display:'flex',alignItems:'center',gap:8,marginBottom:10 }}>
-                      <Cpu size={14} style={{ color:'#818cf8' }} />
-                      <h4 style={{ fontSize:'0.65rem',fontWeight:800,textTransform:'uppercase',letterSpacing:'0.18em',color:'var(--text-primary)' }}>Challenges &amp; Breakthroughs</h4>
+                    <div className="flex items-center gap-2 mb-2.5">
+                      <Cpu size={14} className="text-violet-400" />
+                      <h4 className="text-[10px] uppercase font-mono tracking-widest text-white font-bold">Core Engineering Blockers</h4>
                     </div>
                     <p>{caseStudies[caseStudy].challenges}</p>
                   </div>
 
-                  <div style={{ padding:'22px 22px',borderRadius:12,background:'rgba(99,102,241,0.05)',border:'1px solid rgba(99,102,241,0.15)',display:'flex',flexDirection:'column',gap:18 }}>
+                  {/* Role and Impact Box */}
+                  <div className="p-6 rounded-2xl bg-gradient-to-br from-violet-950/20 to-cyan-950/20 border border-white/5 flex flex-col gap-4">
                     <div>
-                      <h4 style={{ fontSize:'0.65rem',fontWeight:800,textTransform:'uppercase',letterSpacing:'0.18em',color:'#818cf8',marginBottom:8 }}>My Role</h4>
-                      <p style={{ color:'var(--text-primary)' }}>{caseStudies[caseStudy].role}</p>
+                      <h4 className="text-[10px] uppercase font-mono tracking-widest text-violet-400 font-bold mb-2">My Deployment Vector</h4>
+                      <p className="text-white font-semibold">{caseStudies[caseStudy].role}</p>
                     </div>
-                    <div>
-                      <div style={{ display:'flex',alignItems:'center',gap:8,marginBottom:8 }}>
-                        <TrendingUp size={13} style={{ color:'#818cf8' }} />
-                        <h4 style={{ fontSize:'0.65rem',fontWeight:800,textTransform:'uppercase',letterSpacing:'0.18em',color:'#818cf8' }}>Measurable Impact</h4>
+                    
+                    <div className="border-t border-white/5 pt-4">
+                      <div className="flex items-center gap-2 mb-2">
+                        <TrendingUp size={13} className="text-cyan-400" />
+                        <h4 className="text-[10px] uppercase font-mono tracking-widest text-cyan-400 font-bold">Measurable Gains</h4>
                       </div>
-                      <p style={{ color:'var(--text-primary)',fontWeight:600,fontSize:'0.9rem' }}>{caseStudies[caseStudy].impact}</p>
+                      <p className="text-cyan-300 font-bold text-sm sm:text-base font-mono">{caseStudies[caseStudy].impact}</p>
                     </div>
                   </div>
+
                 </div>
               )}
             </motion.div>

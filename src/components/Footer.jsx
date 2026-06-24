@@ -8,8 +8,8 @@ const navLinks = [
   { label: 'Home',       href: '#hero' },
   { label: 'About',      href: '#about' },
   { label: 'Skills',     href: '#skills' },
-  { label: 'Projects',   href: '#projects' },
   { label: 'Experience', href: '#experience' },
+  { label: 'Projects',   href: '#projects' },
   { label: 'Contact',    href: '#contact' },
 ];
 
@@ -25,55 +25,49 @@ export default function Footer() {
 
   return (
     <footer
-      className="relative overflow-hidden"
-      style={{ background: 'var(--bg-primary)', borderTop: '1px solid var(--border)' }}
+      className="relative overflow-hidden border-t border-white/5 bg-[#020612]"
     >
-      {/* Subtle top glow line */}
+      {/* Laser thin glowing beam at top */}
       <div
-        className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[1px] pointer-events-none"
-        style={{ background: 'linear-gradient(90deg, transparent, rgba(99,102,241,0.35), transparent)' }}
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] sm:w-[900px] h-[1px] pointer-events-none bg-gradient-to-r from-transparent via-violet-500/50 to-transparent"
       />
 
-      <div className="container py-12">
-        {/* Top row */}
+      <div className="max-w-6xl mx-auto px-6 py-12">
+        {/* Top Navigation & Brand Row */}
         <div className="flex flex-wrap gap-8 items-center justify-between mb-10">
 
-          {/* Brand */}
+          {/* Sci-Fi Brand logo */}
           <a href="#hero" className="flex items-center gap-3 no-underline">
             <div
-              className="w-10 h-10 rounded-xl flex items-center justify-center"
-              style={{ background: 'linear-gradient(135deg, #3b82f6, #8b5cf6)' }}
+              className="w-10 h-10 rounded-full flex items-center justify-center bg-gradient-to-tr from-violet-600 to-cyan-400 shadow-md shadow-violet-950/50"
             >
-              <Code2 size={18} color="white" strokeWidth={2.5} />
+              <Code2 size={16} color="white" strokeWidth={2.5} />
             </div>
             <div>
-              <span className="block text-sm font-extrabold" style={{ fontFamily: 'Inter, sans-serif', color: 'var(--text-primary)' }}>
-                Akhilesh Mekarthi
+              <span className="block text-sm font-black text-white tracking-wider font-mono">
+                AKHILESH MEKARTHI
               </span>
-              <span className="block text-[10px] font-semibold tracking-wider" style={{ color: 'var(--text-secondary)' }}>
-                Full Stack Developer
+              <span className="block text-[9px] font-mono font-bold tracking-widest text-slate-500 uppercase">
+                Frontend &amp; Full Stack
               </span>
             </div>
           </a>
 
-          {/* Nav links */}
+          {/* Footer Navigation links */}
           <nav className="hidden md:flex flex-wrap gap-x-6 gap-y-2">
             {navLinks.map(link => (
               <a
                 key={link.href}
                 href={link.href}
-                className="text-xs font-semibold transition-colors no-underline"
-                style={{ color: 'var(--text-secondary)', fontFamily: 'Inter, sans-serif' }}
-                onMouseEnter={e => { e.currentTarget.style.color = 'var(--text-primary)'; }}
-                onMouseLeave={e => { e.currentTarget.style.color = 'var(--text-secondary)'; }}
+                className="text-xs font-semibold text-slate-400 hover:text-white transition-colors duration-200 uppercase tracking-wider font-mono text-[10px]"
               >
                 {link.label}
               </a>
             ))}
           </nav>
 
-          {/* Socials + Back to top */}
-          <div className="flex items-center gap-2">
+          {/* Social Links & Back to top button */}
+          <div className="flex items-center gap-2.5">
             {socials.map(({ icon: Icon, href, label }) => (
               <motion.a
                 key={label}
@@ -81,38 +75,39 @@ export default function Footer() {
                 target={href.startsWith('http') ? '_blank' : undefined}
                 rel="noopener noreferrer"
                 title={label}
-                className="icon-btn"
-                whileHover={{ y: -3, scale: 1.1 }}
+                className="w-9 h-9 rounded-full border border-white/5 bg-slate-950/20 hover:border-white/10 flex items-center justify-center text-slate-400 hover:text-white transition-all"
+                whileHover={{ y: -3, scale: 1.08 }}
               >
-                <Icon size={15} />
+                <Icon size={14} />
               </motion.a>
             ))}
+            
             <motion.button
               onClick={scrollTop}
               title="Back to top"
-              whileHover={{ y: -3, scale: 1.1 }}
+              whileHover={{ y: -3, scale: 1.08 }}
               whileTap={{ scale: 0.95 }}
-              className="w-10 h-10 rounded-xl flex items-center justify-center border-none cursor-pointer"
-              style={{ background: 'linear-gradient(135deg, #3b82f6, #8b5cf6)', boxShadow: '0 4px 16px rgba(99,102,241,0.25)' }}
+              className="w-9 h-9 rounded-full flex items-center justify-center bg-gradient-to-tr from-violet-600 to-cyan-400 text-white cursor-pointer shadow-lg shadow-violet-950/40"
             >
-              <ArrowUp size={15} color="white" />
+              <ArrowUp size={14} />
             </motion.button>
           </div>
         </div>
 
-        {/* Divider */}
-        <div className="h-px mb-6" style={{ background: 'var(--border)' }} />
+        {/* Divider line */}
+        <div className="h-[1px] bg-white/5 mb-6" />
 
-        {/* Bottom bar */}
-        <div className="flex flex-wrap gap-4 items-center justify-between">
-          <p className="text-xs flex items-center gap-1.5" style={{ color: 'var(--text-secondary)' }}>
-            © {year} Akhilesh Mekarthi · Built with
-            <Heart size={11} className="inline animate-pulse" style={{ color: '#f43f5e' }} />
+        {/* Bottom Credits Row */}
+        <div className="flex flex-wrap gap-4 items-center justify-between text-[11px] text-slate-500">
+          <p className="flex items-center gap-1.5 font-mono">
+            © {year} Akhilesh Mekarthi. Orbiting with
+            <Heart size={11} className="inline text-rose-500 animate-pulse" />
             using React, Vite &amp; Framer Motion
           </p>
-          <div className="flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full status-ping" style={{ background: '#10b981' }} />
-            <span className="text-xs font-semibold" style={{ color: '#34d399' }}>Open to opportunities</span>
+          
+          <div className="flex items-center gap-2 font-mono">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
+            <span className="text-emerald-400 font-bold text-[10px] uppercase tracking-wider">Open for opportunities</span>
           </div>
         </div>
       </div>

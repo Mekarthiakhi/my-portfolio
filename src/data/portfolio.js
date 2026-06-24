@@ -1,12 +1,12 @@
 export const personalInfo = {
   name: "Akhilesh Mekarthi",
-  role: "Full Stack Developer",
-  tagline: "Building scalable, high-performance web applications",
-  summary: "Full Stack Engineer with 2+ years of experience building scalable, high-performance web applications in production environments. Proficient in React.js and Node.js with a strong foundation in Data Structures & Algorithms, system design, and database optimization. Track record of reducing manual effort and improving response times through thoughtful architecture and clean code.",
+  role: "Frontend & Full Stack Developer",
+  tagline: "Building scalable, high-performance web applications & healthcare solutions",
+  summary: "Full Stack Engineer with 2+ years of experience building scalable, high-performance web applications in production environments. Proficient in React.js, Node.js, and modern frontend technologies with a strong foundation in Data Structures & Algorithms, system design, and database optimization. Track record of reducing manual effort and improving response times through thoughtful architecture and clean code at Medicover Hospitals.",
   strengths: [
     "Scalable System Design",
     "Real-Time Systems",
-    "Clean Architecture",
+    "Clean UI/UX Architecture",
     "Performance Optimization"
   ],
   email: "akhileshmekarthi74@gmail.com",
@@ -22,7 +22,7 @@ export const skills = [
     category: "Frontend",
     icon: "🎨",
     color: "#3b82f6",
-    items: ["React.js", "HTML5", "CSS3", "jQuery", "Bootstrap", "Redux"]
+    items: ["React.js", "HTML5", "CSS3", "JavaScript", "jQuery", "Bootstrap", "DataTables", "Redux"]
   },
   {
     category: "Backend",
@@ -40,13 +40,13 @@ export const skills = [
     category: "Tools & Platforms",
     icon: "🛠️",
     color: "#10b981",
-    items: ["Firebase FCM", "Redis", "Socket.io", "Git", "REST APIs"]
+    items: ["Firebase FCM", "Redis", "Socket.io", "Git", "Vite"]
   },
   {
     category: "Languages",
     icon: "💻",
     color: "#f59e0b",
-    items: ["JavaScript", "Python", "Java", "C++"]
+    items: ["JavaScript", "TypeScript", "PHP", "Python", "Java", "C++"]
   },
   {
     category: "Core Concepts",
@@ -96,54 +96,43 @@ export const experience = [
 
 export const projects = [
   {
-    title: "Real-Time Notification System",
-    description: "Push notification platform with token-based delivery and background service workers for reliable message handling across hospital workflows.",
-    tech: ["Firebase FCM", "Service Workers", "JavaScript", "Node.js"],
-    features: ["Token-based delivery", "Background sync", "Delivery receipts", "Multi-device support"],
+    title: "Auto Job Apply Bot",
+    description: "High-performance automated job application bot built with TypeScript that automates and optimizes the job hunting process, auto-filling listings and tracking applications.",
+    tech: ["TypeScript", "Node.js", "Puppeteer", "Git"],
+    features: ["Automated Form Filling", "Application Status Tracking", "Custom Selector Mapping", "Headless/Headful Modes"],
+    color: "#3178c6",
+    icon: "🤖",
+    github: "https://github.com/Mekarthiakhi/autoJobApply",
+    demo: "#",
+    category: "Backend / Automation"
+  },
+  {
+    title: "DSA Practice Visualizer",
+    description: "An interactive algorithm and data structure visualizer designed to help developers practice and master DSA concepts through real-time step-by-step code execution tracing.",
+    tech: ["TypeScript", "React", "Framer Motion", "Vite"],
+    features: ["Visual Call Stack Tracing", "Interactive Code Step Execution", "Custom Data Input Testing", "Animated Graph & Tree Traversals"],
     color: "#3b82f6",
-    icon: "🔔",
-    github: "https://github.com/akhileshmekarthi",
+    icon: "📊",
+    github: "https://github.com/Mekarthiakhi/DSA-practice-visual",
     demo: "#",
-    category: "Backend"
+    category: "Frontend"
   },
   {
-    title: "Hospital Management System",
-    description: "Full-stack system covering billing, reporting, and authentication modules for end-to-end hospital operations serving 1,000+ daily transactions.",
-    tech: ["PHP", "MySQL", "JavaScript", "REST APIs"],
-    features: ["Billing automation", "Patient records", "Role-based auth", "Real-time reports"],
-    color: "#8b5cf6",
-    icon: "🏥",
-    github: "https://github.com/akhileshmekarthi",
+    title: "Compliance Graph Visualizer",
+    description: "A dynamic force-directed relationship graph representing medical compliance rules, hierarchies, nodes, and parent-child dependencies inside healthcare systems.",
+    tech: ["JavaScript", "D3.js", "React", "SVG Rendering"],
+    features: ["Force-Directed Node Graph", "Interactive Hierarchical Drilling", "Dynamic Live Search & Filters", "Dependency Conflict Alerts"],
+    color: "#f1e05a",
+    icon: "🕸️",
+    github: "https://github.com/Mekarthiakhi/ComplianceGraph",
     demo: "#",
-    category: "Full Stack"
-  },
-  {
-    title: "Patient Portal Dashboard",
-    description: "Secure OTP-authenticated portal for patients to view lab, radiology, and diagnostic reports in real time with role-based access control.",
-    tech: ["React.js", "Node.js", "OTP Auth", "MySQL"],
-    features: ["OTP authentication", "Real-time reports", "Radiology viewer", "Mobile responsive"],
-    color: "#06b6d4",
-    icon: "🩺",
-    github: "https://github.com/akhileshmekarthi",
-    demo: "#",
-    category: "Full Stack"
-  },
-  {
-    title: "URL Shortener",
-    description: "High-performance URL shortener with Redis caching for sub-millisecond redirect resolution at scale with analytics and click tracking.",
-    tech: ["Node.js", "Redis", "Express.js", "MySQL"],
-    features: ["Sub-ms redirects", "Click analytics", "Custom slugs", "Redis caching"],
-    color: "#10b981",
-    icon: "🔗",
-    github: "https://github.com/akhileshmekarthi",
-    demo: "#",
-    category: "Backend"
+    category: "Frontend"
   },
   {
     title: "Real-Time Chat App",
-    description: "Bidirectional messaging application with persistent storage via Firebase and live updates through WebSockets for seamless communication.",
+    description: "A secure bidirectional messaging application featuring online presence tracking, typing indicators, and persistent chat history with a responsive glassmorphic layout.",
     tech: ["Socket.io", "Firebase", "React.js", "Node.js"],
-    features: ["Real-time messaging", "Persistent history", "Typing indicators", "Online presence"],
+    features: ["Real-time Messaging", "Persistent History", "Typing Indicators", "Online Presence Status"],
     color: "#f59e0b",
     icon: "💬",
     github: "https://github.com/Mekarthiakhi/Chat-App",
@@ -151,21 +140,10 @@ export const projects = [
     category: "Full Stack"
   },
   {
-    title: "E-Commerce Platform",
-    description: "Full-stack store with product catalog, cart management, and integrated payment gateway processing with inventory management.",
-    tech: ["React", "Node.js", "Payment API", "MySQL"],
-    features: ["Product catalog", "Cart & checkout", "Payment gateway", "Order tracking"],
-    color: "#ef4444",
-    icon: "🛒",
-    github: "https://github.com/akhileshmekarthi",
-    demo: "#",
-    category: "Full Stack"
-  },
-  {
     title: "DealScout AI Dashboard",
-    description: "AI-powered product comparison dashboard with live API integrations and real-time deal fetching, featuring a high-performance UI.",
+    description: "An AI-powered product deals aggregator and comparison dashboard that integrates multiple live e-commerce APIs to fetch and sort deals in real time.",
     tech: ["React", "Node.js", "AI APIs", "Vite"],
-    features: ["AI product comparison", "Real-time deal fetching", "Secure API integration", "Dynamic layout"],
+    features: ["AI Product Comparison", "Real-time Deal Fetching", "Secure API Integration", "Dynamic responsive layout"],
     color: "#ec4899",
     icon: "🛍️",
     github: "https://github.com/Mekarthiakhi/dealScout",
@@ -174,14 +152,47 @@ export const projects = [
   },
   {
     title: "Loan Management System",
-    description: "Comprehensive Firebase-powered loan management platform featuring advanced interest calculation logic, CSV exports, and dynamic dashboard statistics.",
+    description: "A robust financial dashboard tracking loans, interest rates, payments, and metrics. Integrates full spreadsheet imports/exports and automated interest math.",
     tech: ["React", "Firebase", "JavaScript", "Tailwind CSS"],
-    features: ["Complex interest math", "CSV export functionality", "Role-based access", "Dark mode UI"],
+    features: ["Complex Interest Calculations", "CSV/Excel Export Functionality", "Real-Time Analytics Dashboard", "Dark Mode UI"],
     color: "#14b8a6",
     icon: "💰",
     github: "https://github.com/Mekarthiakhi/loan-app",
     demo: "https://loan-app-chi-seven.vercel.app/",
     category: "Full Stack"
+  },
+  {
+    title: "Real-Time Notification System",
+    description: "Push notification platform with token-based delivery and background service workers for reliable message handling across hospital workflows at Medicover.",
+    tech: ["Firebase FCM", "Service Workers", "JavaScript", "Node.js"],
+    features: ["Token-based delivery", "Background sync", "Delivery receipts", "Multi-device support"],
+    color: "#3b82f6",
+    icon: "🔔",
+    github: "https://github.com/Mekarthiakhi",
+    demo: "#",
+    category: "Backend"
+  },
+  {
+    title: "Patient Portal Dashboard",
+    description: "Secure OTP-authenticated portal for patients to view lab, radiology, and diagnostic reports in real time with role-based access control.",
+    tech: ["React.js", "Node.js", "OTP Auth", "MySQL"],
+    features: ["OTP authentication", "Real-time reports", "Radiology viewer", "Mobile responsive"],
+    color: "#06b6d4",
+    icon: "🩺",
+    github: "https://github.com/Mekarthiakhi",
+    demo: "#",
+    category: "Full Stack"
+  },
+  {
+    title: "Antigravity Portfolio",
+    description: "An immersive, award-winning 3D portfolio featuring a custom weightless physics engine, Three.js holographic avatars, and futuristic UI design.",
+    tech: ["React", "Three.js", "Framer Motion", "Tailwind CSS"],
+    features: ["Custom 60FPS Physics Engine", "WebGL Particle Systems", "AI Voice Integration", "Immersive Audio Ambience"],
+    color: "#8b5cf6",
+    icon: "🌌",
+    github: "https://github.com/Mekarthiakhi/my-portfolio",
+    demo: "#",
+    category: "Frontend"
   }
 ];
 

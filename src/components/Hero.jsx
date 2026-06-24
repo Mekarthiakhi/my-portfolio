@@ -1,230 +1,212 @@
-// src/components/Hero.jsx
 import { motion } from "framer-motion";
-import { ReactTyped } from "react-typed";
 import { ArrowDown, Download, ChevronRight, Sparkles, Mail } from "lucide-react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { personalInfo } from "../data/portfolio";
-import akki from "../../public/akki.png";
-import TechIcons from "./TechIcons";
+import SpaceCanvas from "./SpaceCanvas";
 
-const fade = (delay = 0) => ({
-  initial: { opacity: 0, y: 22 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.55, delay, ease: "easeOut" },
-});
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+      delayChildren: 0.3
+    }
+  }
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { 
+    opacity: 1, 
+    y: 0, 
+    transition: { type: "spring", stiffness: 80, damping: 15 }
+  }
+};
 
 export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative flex items-center justify-center min-h-screen overflow-hidden"
-      style={{ background: "var(--bg-primary)" }}
+      className="relative flex items-center justify-center min-h-screen w-full overflow-hidden"
     >
-      {/* Mesh grid */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          backgroundImage: `
-            linear-gradient(rgba(99,102,241,0.035) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(99,102,241,0.035) 1px, transparent 1px)
-          `,
-          backgroundSize: "64px 64px",
-        }}
-      />
+      {/* 1. 3D Space & Holographic Avatar Backdrop */}
+      <SpaceCanvas />
 
-      {/* Ambient glows */}
-      <div className="absolute top-1/4 left-1/3 w-[480px] h-[480px] rounded-full pointer-events-none"
-        style={{ background: "radial-gradient(circle, rgba(59,130,246,0.08) 0%, transparent 70%)" }} />
-      <div className="absolute bottom-1/3 right-1/4 w-[360px] h-[360px] rounded-full pointer-events-none"
-        style={{ background: "radial-gradient(circle, rgba(139,92,246,0.07) 0%, transparent 70%)" }} />
-
-      {/* Floating Tech Icons */}
-      <TechIcons />
-
-      {/* ── Main Content ── */}
-      <div className="container relative z-10 flex flex-col md:flex-row items-center gap-14 py-28 md:py-20">
-
-        {/* LEFT — Profile Image */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.88, x: -30 }}
-          animate={{ opacity: 1, scale: 1, x: 0 }}
-          transition={{ duration: 0.75, ease: "easeOut" }}
-          className="shrink-0 flex justify-center w-full md:w-auto"
+      {/* 2. Floating Tech Badges (Weightless 2D elements orbiting in front) */}
+      <div className="absolute inset-0 pointer-events-none z-10 hidden sm:block">
+        {/* React Badge */}
+        <motion.div 
+          className="absolute top-[22%] left-[12%] px-3 py-1.5 rounded-full border border-cyan-500/20 bg-slate-950/40 backdrop-blur-md text-[11px] font-mono text-cyan-400 font-bold shadow-lg shadow-cyan-950/20"
+          animate={{ y: [0, -12, 0] }}
+          transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
         >
-          <div className="relative">
-            {/* Glow ring */}
-            <div
-              className="absolute -inset-[3px] rounded-full blur-[6px] opacity-60"
-              style={{ background: "linear-gradient(135deg, #3b82f6, #8b5cf6, #06b6d4)" }}
-            />
-            {/* Image */}
-            <div className="relative w-52 h-52 sm:w-60 sm:h-60 md:w-68 md:h-68 rounded-full overflow-hidden border border-white/10">
-              <img
-                src={akki}
-                alt={`${personalInfo.name} — Portfolio Photo`}
-                className="w-full h-full object-cover"
-                loading="eager"
-              />
-              <div className="absolute inset-0 rounded-full bg-gradient-to-t from-black/20 to-transparent" />
-            </div>
-            {/* Status badge */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.9 }}
-              className="absolute -bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-1.5 px-3 py-1.5 rounded-full whitespace-nowrap"
-              style={{
-                background: "rgba(6,11,22,0.92)",
-                border: "1px solid rgba(16,185,129,0.35)",
-                backdropFilter: "blur(12px)",
-              }}
-            >
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 status-ping" />
-              <span className="text-[10px] font-bold tracking-widest uppercase text-emerald-400">
-                Open to work
-              </span>
-            </motion.div>
-          </div>
+          ⚛️ REACT
+        </motion.div>
+        
+        {/* Node.js Badge */}
+        <motion.div 
+          className="absolute top-[68%] left-[18%] px-3 py-1.5 rounded-full border border-emerald-500/20 bg-slate-950/40 backdrop-blur-md text-[11px] font-mono text-emerald-400 font-bold shadow-lg shadow-emerald-950/20"
+          animate={{ y: [0, 10, 0] }}
+          transition={{ repeat: Infinity, duration: 7, ease: "easeInOut", delay: 1 }}
+        >
+          🟢 NODE.JS
         </motion.div>
 
-        {/* RIGHT — Text */}
-        <div className="flex-1 text-center md:text-left min-w-0">
+        {/* PHP Badge */}
+        <motion.div 
+          className="absolute top-[28%] right-[15%] px-3 py-1.5 rounded-full border border-violet-500/20 bg-slate-950/40 backdrop-blur-md text-[11px] font-mono text-violet-400 font-bold shadow-lg shadow-violet-950/20"
+          animate={{ y: [0, -15, 0] }}
+          transition={{ repeat: Infinity, duration: 8, ease: "easeInOut", delay: 0.5 }}
+        >
+          🐘 PHP
+        </motion.div>
 
-          {/* Badge */}
-          <motion.div {...fade(0)} className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full mb-5"
-            style={{
-              background: "rgba(99,102,241,0.08)",
-              border: "1px solid rgba(99,102,241,0.3)",
-            }}>
-            <Sparkles size={12} className="text-indigo-400 animate-pulse" />
-            <span className="text-[11px] font-bold tracking-wide uppercase text-indigo-300">
-              Full Stack · Healthcare · Real-Time Apps
+        {/* REST API Badge */}
+        <motion.div 
+          className="absolute top-[62%] right-[12%] px-3 py-1.5 rounded-full border border-cyan-500/20 bg-slate-950/40 backdrop-blur-md text-[11px] font-mono text-cyan-400 font-bold shadow-lg shadow-cyan-950/20"
+          animate={{ y: [0, 12, 0] }}
+          transition={{ repeat: Infinity, duration: 5, ease: "easeInOut", delay: 1.5 }}
+        >
+          ⚡ REST APIS
+        </motion.div>
+      </div>
+
+      {/* 3. Main Text Content overlay */}
+      <div className="container relative z-20 flex flex-col items-center justify-center text-center px-4 py-32">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+          className="max-w-3xl flex flex-col items-center gap-6"
+        >
+          {/* Glowing Top Chip */}
+          <motion.div 
+            variants={itemVariants}
+            className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border border-violet-500/30 bg-violet-950/10 backdrop-blur-md shadow-inner"
+          >
+            <Sparkles size={12} className="text-violet-400 animate-pulse" />
+            <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-violet-300 font-mono">
+              Antigravity Station Online
             </span>
           </motion.div>
 
-          {/* Name */}
-          <motion.h1
-            {...fade(0.08)}
-            className="font-black mb-2 leading-none"
-            style={{ fontSize: "clamp(2.2rem, 5.5vw, 3.8rem)" }}
+          {/* Core Headline Role */}
+          <motion.h2 
+            variants={itemVariants}
+            className="text-sm sm:text-base font-bold tracking-[0.3em] uppercase text-cyan-400 font-mono"
           >
-            {personalInfo.name.split(" ").map((w, i) =>
-              i === 1
-                ? <span key={i} className="gradient-text"> {w}</span>
-                : <span key={i}>{w}</span>
-            )}
-          </motion.h1>
-
-          {/* Sub-title */}
-          <motion.h2
-            {...fade(0.14)}
-            className="mb-3"
-            style={{
-              fontSize: "clamp(0.95rem, 2.2vw, 1.2rem)",
-              fontWeight: 500,
-              color: "var(--text-secondary)",
-            }}
-          >
-            Building Scalable Healthcare &amp; Modern Web Applications
+            Frontend Developer
           </motion.h2>
 
-          {/* Typing */}
-          <motion.div {...fade(0.18)} className="mb-4 flex items-center gap-1.5 justify-center md:justify-start">
-            <span className="text-sm font-semibold text-indigo-400">I'm a </span>
-            <ReactTyped
-              strings={["Frontend Developer", "React Developer", "Full Stack Developer", "Software Engineer"]}
-              typeSpeed={55}
-              backSpeed={38}
-              loop
-              className="text-sm font-semibold"
-              style={{ color: "var(--text-secondary)" }}
-            />
-          </motion.div>
-
-          {/* Tagline */}
-          <motion.p
-            {...fade(0.22)}
-            className="mb-8 leading-relaxed"
-            style={{
-              fontSize: "0.9rem",
-              color: "var(--text-secondary)",
-              maxWidth: "480px",
-              margin: "0 auto 2rem",
-            }}
+          {/* Immersive Space Name & Title */}
+          <motion.h1 
+            variants={itemVariants}
+            className="text-4xl sm:text-6xl md:text-7xl font-black leading-[1.1] tracking-tight text-white drop-shadow-lg"
           >
-            2+ years building high-performance production systems. Specializing in
-            React.js, Node.js, Firebase, PHP, real-time architectures, and optimised database design.
+            Akhilesh Mekarthi
+          </motion.h1>
+
+          <motion.h3
+            variants={itemVariants}
+            className="text-lg sm:text-2xl font-bold max-w-2xl leading-relaxed text-transparent bg-clip-text bg-gradient-to-r from-violet-400 via-cyan-300 to-emerald-300"
+          >
+            Building Modern Healthcare Solutions
+          </motion.h3>
+
+          {/* Short Bio */}
+          <motion.p 
+            variants={itemVariants}
+            className="text-sm sm:text-base text-slate-400 max-w-xl leading-relaxed"
+          >
+            Full Stack Engineer with 2+ years of experience specialized in building responsive, high-availability dashboard systems, real-time message architectures, and optimized databases.
           </motion.p>
 
-          {/* CTA Row */}
-          <motion.div
-            {...fade(0.27)}
-            className="flex flex-wrap gap-3 items-center justify-center md:justify-start mb-8"
+          {/* Interactive CTA buttons */}
+          <motion.div 
+            variants={itemVariants}
+            className="flex flex-wrap items-center justify-center gap-4 mt-4"
           >
-            <motion.a href="#projects" className="btn-primary" whileHover={{ y: -2 }} whileTap={{ scale: 0.97 }}>
-              <ChevronRight size={15} />
-              View Projects
-            </motion.a>
-            <motion.a href="/Akhilesh_1.pdf" download className="btn-secondary" whileHover={{ y: -2 }} whileTap={{ scale: 0.97 }}>
-              <Download size={15} />
-              Resume
+            <motion.a 
+              href="#projects" 
+              className="px-6 py-3 rounded-full text-xs font-bold tracking-widest uppercase flex items-center gap-2 text-white shadow-lg shadow-violet-950/30"
+              style={{
+                background: "linear-gradient(135deg, #8b5cf6, #06b6d4)",
+              }}
+              whileHover={{ 
+                scale: 1.04,
+                y: -2,
+                boxShadow: "0 0 20px rgba(139, 92, 246, 0.4)"
+              }}
+              whileTap={{ scale: 0.98 }}
+            >
+              <ChevronRight size={14} />
+              Explore Work
             </motion.a>
 
-            {/* Social icons */}
-            <div className="flex gap-2">
-              {[
-                { href: personalInfo.github,            Icon: FaGithub,   label: "GitHub" },
-                { href: personalInfo.linkedin,           Icon: FaLinkedin, label: "LinkedIn" },
-                { href: `mailto:${personalInfo.email}`,  Icon: Mail,       label: "Email" },
-              ].map(({ href, Icon, label }) => (
-                <motion.a
-                  key={label}
-                  href={href}
-                  target={href.startsWith("http") ? "_blank" : undefined}
-                  rel="noopener noreferrer"
-                  title={label}
-                  className="icon-btn"
-                  whileHover={{ y: -3, scale: 1.1 }}
-                >
-                  <Icon size={16} />
-                </motion.a>
-              ))}
-            </div>
+            <motion.a 
+              href="/Akhilesh_1.pdf" 
+              download 
+              className="px-6 py-3 rounded-full text-xs font-bold tracking-widest uppercase flex items-center gap-2 text-slate-300 hover:text-white border border-white/10 bg-slate-950/20 backdrop-blur-md transition-colors"
+              whileHover={{ 
+                scale: 1.04,
+                y: -2,
+                borderColor: "rgba(255,255,255,0.2)"
+              }}
+              whileTap={{ scale: 0.98 }}
+            >
+              <Download size={14} />
+              Get Resume
+            </motion.a>
           </motion.div>
 
-          {/* Tech tags */}
-          <motion.div
-            {...fade(0.36)}
-            className="flex flex-wrap gap-2 justify-center md:justify-start"
+          {/* Social connections */}
+          <motion.div 
+            variants={itemVariants}
+            className="flex items-center gap-4 mt-6"
           >
-            {["React.js", "Node.js", "Firebase", "PHP", "MySQL", "Real-Time"].map((tag) => (
-              <span
-                key={tag}
-                className="text-[10px] font-bold px-2.5 py-1 rounded-md"
-                style={{
-                  background: "rgba(99,102,241,0.07)",
-                  border: "1px solid rgba(99,102,241,0.18)",
-                  color: "#a5b4fc",
-                }}
+            {[
+              { href: personalInfo.github, Icon: FaGithub, label: "GitHub" },
+              { href: personalInfo.linkedin, Icon: FaLinkedin, label: "LinkedIn" },
+              { href: `mailto:${personalInfo.email}`, Icon: Mail, label: "Email" },
+            ].map(({ href, Icon, label }) => (
+              <motion.a
+                key={label}
+                href={href}
+                target={href.startsWith("http") ? "_blank" : undefined}
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full border border-white/5 bg-slate-950/30 flex items-center justify-center text-slate-400 hover:text-white transition-all hover:neon-glow-cyan"
+                whileHover={{ y: -3, scale: 1.08 }}
+                whileTap={{ scale: 0.95 }}
               >
-                {tag}
-              </span>
+                <Icon size={16} />
+              </motion.a>
             ))}
           </motion.div>
-        </div>
+        </motion.div>
       </div>
 
-      {/* Scroll indicator */}
-      <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1"
-        style={{ opacity: 0.4 }}
-        animate={{ y: [0, 7, 0] }}
-        transition={{ repeat: Infinity, duration: 1.9 }}
+      {/* 4. Weightless Scrolling Indicator */}
+      <motion.div 
+        className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 pointer-events-none"
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1.5, duration: 1 }}
       >
-        <span className="text-[9px] font-bold uppercase tracking-widest" style={{ color: "var(--text-muted)" }}>
-          scroll
+        <span className="text-[9px] uppercase font-mono tracking-[0.25em] text-slate-500">
+          Scroll to explore
         </span>
-        <ArrowDown size={13} style={{ color: "var(--text-muted)" }} />
+        <motion.div 
+          className="w-5 h-8 rounded-full border-2 border-slate-600 flex justify-center p-1"
+          animate={{ y: [0, 5, 0] }}
+          transition={{ repeat: Infinity, duration: 1.8, ease: "easeInOut" }}
+        >
+          <motion.div 
+            className="w-1 h-1.5 rounded-full bg-cyan-400"
+            animate={{ y: [0, 10, 0], opacity: [1, 0, 1] }}
+            transition={{ repeat: Infinity, duration: 1.8, ease: "easeInOut" }}
+          />
+        </motion.div>
       </motion.div>
     </section>
   );

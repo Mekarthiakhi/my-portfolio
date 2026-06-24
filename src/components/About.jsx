@@ -1,29 +1,30 @@
 import { motion } from "framer-motion";
 import { useInView } from "../hooks/useInView";
-import { education, awards } from "../data/portfolio";
-import { GraduationCap, Trophy, Cpu, Activity, Shield, Zap, TrendingUp } from "lucide-react";
+import { education, awards, personalInfo } from "../data/portfolio";
+import { GraduationCap, Trophy, Cpu, Activity, Shield, Zap, Terminal } from "lucide-react";
 
 const strengths = [
-  { label: "Scalable System Design",  icon: Cpu,      desc: "Fault-tolerant architectures, load-balanced microservices, and distributed systems." },
-  { label: "Real-Time Systems",        icon: Activity, desc: "Async event buses, Firebase FCM push queues, and WebSocket pipelines." },
-  { label: "Clean Architecture",       icon: Shield,   desc: "Low coupling, high cohesion, SOLID design principles throughout." },
-  { label: "Performance Optimization", icon: Zap,      desc: "Database index tuning, Redis-based caching, and query optimization strategies." },
+  { label: "Scalable System Design",  icon: Cpu,      desc: "High-throughput architectures, optimized microservices, and secure distributed nodes.", color: "rgba(139, 92, 246, 0.3)" },
+  { label: "Real-Time Systems",        icon: Activity, desc: "Asynchronous event queues, Firebase FCM pipelines, and active Socket.io hubs.", color: "rgba(6, 182, 212, 0.3)" },
+  { label: "Clean Architecture",       icon: Shield,   desc: "Robust SOLID patterns, loose coupling, high cohesion, and scalable modular code.", color: "rgba(16, 185, 129, 0.3)" },
+  { label: "Performance Optimization", icon: Zap,      desc: "Database indexing tuning, Redis caching layers, and high-performance SQL query design.", color: "rgba(245, 158, 11, 0.3)" },
 ];
 
 const stats = [
-  { value: "2+",   label: "Years Experience",    color: "#3b82f6" },
-  { value: "1K+",  label: "Daily Txns Secured",  color: "#8b5cf6" },
-  { value: "300+", label: "LeetCode Solutions",  color: "#06b6d4" },
-  { value: "8+",   label: "Production Apps",     color: "#10b981" },
+  { value: "2+",   label: "Years Experience",    color: "neon-glow-cyan" },
+  { value: "1K+",  label: "Daily Txns Secured",  color: "neon-glow-violet" },
+  { value: "300+", label: "LeetCode Solutions",  color: "neon-glow-emerald" },
+  { value: "8+",   label: "Production Apps",     color: "neon-glow-cyan" },
 ];
 
-const cv = {
-  hidden:  { opacity: 0 },
-  visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1, transition: { staggerChildren: 0.12 } },
 };
-const iv = {
-  hidden:  { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: "easeOut" } },
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 35 },
+  visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 80, damping: 15 } },
 };
 
 export default function About() {
@@ -32,119 +33,87 @@ export default function About() {
   return (
     <section
       id="about"
-      style={{
-        background: "var(--bg-primary)",
-        paddingTop: "clamp(80px, 10vw, 130px)",
-        paddingBottom: "clamp(80px, 10vw, 130px)",
-        overflow: "hidden",
-        position: "relative",
-      }}
+      className="relative py-24 sm:py-32 w-full overflow-hidden bg-[#030712]"
     >
-      {/* Ambient glow */}
-      <div className="absolute top-0 right-0 pointer-events-none"
-        style={{
-          width: 500, height: 500,
-          background: "radial-gradient(circle at top right, rgba(99,102,241,0.06) 0%, transparent 65%)",
-        }}
-      />
+      {/* Soft background glows */}
+      <div className="absolute top-0 right-0 w-[450px] h-[450px] bg-violet-600/5 rounded-full blur-[110px] pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[350px] h-[350px] bg-cyan-600/5 rounded-full blur-[90px] pointer-events-none" />
 
       <motion.div
         ref={ref}
-        className="container"
-        variants={cv}
+        className="max-w-6xl mx-auto px-6"
+        variants={containerVariants}
         initial="hidden"
         animate={inView ? "visible" : "hidden"}
       >
-        {/* ── Section Header ── */}
-        <motion.div variants={iv} style={{ marginBottom: 64 }}>
-          <div className="section-tag"><span>●</span> Professional Profile</div>
-          <h2 className="section-title">
-            Architecting high-performance{" "}
-            <span className="gradient-text">software</span>
+        {/* Section Title */}
+        <motion.div variants={itemVariants} className="mb-16 max-w-2xl text-left">
+          <div className="inline-flex items-center gap-2 text-xs font-mono font-bold tracking-[0.25em] uppercase text-cyan-400 mb-3">
+            <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
+            01 / System Telemetry
+          </div>
+          <h2 className="text-3xl sm:text-5xl font-black text-white leading-tight tracking-tight mb-5">
+            Architecting high-performance <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 via-cyan-400 to-emerald-400">software.</span>
           </h2>
-          <p className="section-subtitle">
-            Full Stack Engineer with 2+ years specializing in the design, optimization, and scaling of
-            high-performance web applications — including mission-critical healthcare systems processing
-            thousands of daily transactions and real-time push infrastructures.
+          <p className="text-sm sm:text-base text-slate-400 leading-relaxed">
+            Full Stack Developer with 2+ years of expertise designing, optimizing, and scaling web infrastructure. I bridge responsive frontend visual excellence with highly optimized backend and database layers, ensuring mission-critical reliability at Medicover Hospitals.
           </p>
         </motion.div>
 
-        {/* ── Main 2-Column Grid ── */}
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 480px), 1fr))",
-            gap: "clamp(32px, 4vw, 56px)",
-            alignItems: "start",
-          }}
-        >
-          {/* LEFT — Stats + Core Strengths */}
-          <div style={{ display: "flex", flexDirection: "column", gap: 32 }}>
-
-            {/* Stats row */}
-            <motion.div
-              variants={iv}
-              style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(2, 1fr)",
-                gap: 16,
-              }}
+        {/* Layout Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          
+          {/* LEFT COLUMN — Stats and Strengths */}
+          <div className="lg:col-span-7 flex flex-col gap-8">
+            
+            {/* Quick Stats Grid */}
+            <motion.div 
+              variants={itemVariants}
+              className="grid grid-cols-2 gap-4"
             >
               {stats.map((s, i) => (
                 <div
                   key={i}
-                  className="glass-card"
-                  style={{ padding: "28px 20px", textAlign: "center", position: "relative", overflow: "hidden" }}
+                  className={`zero-g-glass rounded-2xl p-6 text-center relative overflow-hidden transition-all duration-300 ${s.color} hover:scale-[1.02]`}
                 >
-                  <div
-                    style={{
-                      position: "absolute", top: 0, left: 0, right: 0, height: 3,
-                      background: `linear-gradient(90deg, ${s.color}, ${s.color}50)`,
-                    }}
-                  />
-                  <p style={{ fontSize: "1.9rem", fontWeight: 900, lineHeight: 1 }} className="gradient-text">
-                    {s.value}
-                  </p>
-                  <p style={{ fontSize: "0.7rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.15em", color: "var(--text-secondary)", marginTop: 8 }}>
-                    {s.label}
-                  </p>
+                  <span className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-violet-500/50 to-cyan-400/50" />
+                  <div className="text-3xl font-black text-white font-mono tracking-tight">{s.value}</div>
+                  <div className="text-[9px] uppercase font-mono tracking-widest text-slate-400 mt-2 font-bold">{s.label}</div>
                 </div>
               ))}
             </motion.div>
 
-            {/* Core Strengths */}
-            <motion.div variants={iv}>
-              <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 20 }}>
-                <TrendingUp size={16} style={{ color: "#3b82f6" }} />
-                <h3 style={{ fontSize: "0.8rem", fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.15em", color: "var(--text-secondary)" }}>
-                  Core Engineering Strengths
+            {/* Core Architecture Strengths */}
+            <motion.div variants={itemVariants} className="flex flex-col gap-5">
+              <div className="flex items-center gap-2.5">
+                <Terminal size={14} className="text-cyan-400" />
+                <h3 className="text-xs uppercase font-mono tracking-widest text-slate-300 font-bold">
+                  Core Engineering Directives
                 </h3>
               </div>
-              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 16 }}>
+              
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {strengths.map((item, i) => {
                   const Icon = item.icon;
                   return (
                     <div
                       key={i}
-                      className="glass-card"
-                      style={{ padding: "20px 18px", display: "flex", alignItems: "flex-start", gap: 14 }}
+                      className="zero-g-glass rounded-2xl p-5 flex items-start gap-4 hover:border-white/10 transition-all"
                     >
                       <div
-                        style={{
-                          width: 36, height: 36, borderRadius: 10,
-                          background: "rgba(99,102,241,0.08)",
-                          border: "1px solid rgba(99,102,241,0.18)",
-                          display: "flex", alignItems: "center", justifyContent: "center",
-                          flexShrink: 0, color: "#818cf8",
+                        className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 text-white"
+                        style={{ 
+                          background: item.color.replace('0.3', '0.08'), 
+                          border: `1px solid ${item.color.replace('0.3', '0.25')}` 
                         }}
                       >
-                        <Icon size={16} />
+                        <Icon size={15} />
                       </div>
                       <div>
-                        <h4 style={{ fontSize: "0.85rem", fontWeight: 700, color: "var(--text-primary)", marginBottom: 5 }}>
+                        <h4 className="text-xs font-bold text-white mb-1.5 uppercase tracking-wider">
                           {item.label}
                         </h4>
-                        <p style={{ fontSize: "0.78rem", color: "var(--text-secondary)", lineHeight: 1.65 }}>
+                        <p className="text-[11px] text-slate-400 leading-relaxed">
                           {item.desc}
                         </p>
                       </div>
@@ -153,88 +122,107 @@ export default function About() {
                 })}
               </div>
             </motion.div>
+
           </div>
 
-          {/* RIGHT — Role + Education + Awards */}
-          <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
-
-            {/* Current Role */}
-            <motion.div variants={iv} className="glass-card" style={{ padding: "28px 28px", position: "relative", overflow: "hidden" }}>
-              <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 3, background: "linear-gradient(90deg, #10b981, #06b6d4)" }} />
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 18 }}>
+          {/* RIGHT COLUMN — Active Deployment & Education */}
+          <div className="lg:col-span-5 flex flex-col gap-6 w-full">
+            
+            {/* Active Deployment Card */}
+            <motion.div 
+              variants={itemVariants} 
+              className="zero-g-glass rounded-2xl p-6 relative overflow-hidden neon-glow-emerald hover:scale-[1.01] transition-transform"
+            >
+              <span className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-emerald-500 to-cyan-400" />
+              <div className="flex justify-between items-center mb-6">
                 <div>
-                  <p style={{ fontSize: "0.65rem", fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.2em", color: "var(--text-secondary)", marginBottom: 4 }}>
+                  <span className="text-[9px] uppercase font-mono tracking-widest text-slate-400 font-bold block mb-1">
                     Current Deployment
-                  </p>
-                  <p style={{ fontSize: "0.95rem", fontWeight: 700, color: "var(--text-primary)" }}>
+                  </span>
+                  <h4 className="text-sm font-bold text-white uppercase tracking-wider">
                     Medicover Hospitals
-                  </p>
+                  </h4>
                 </div>
-                <span style={{
-                  padding: "4px 10px", borderRadius: 6, fontSize: "0.65rem", fontWeight: 800,
-                  textTransform: "uppercase", letterSpacing: "0.1em",
-                  background: "rgba(16,185,129,0.1)", border: "1px solid rgba(16,185,129,0.3)", color: "#34d399",
-                }}>Active</span>
+                <span className="px-3 py-1 rounded-full text-[9px] font-mono font-bold uppercase tracking-wider bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 animate-pulse">
+                  ACTIVE
+                </span>
               </div>
-              <p style={{ fontSize: "1rem", fontWeight: 700, color: "var(--text-primary)", marginBottom: 16 }}>
-                Software Developer (Full-Stack)
-              </p>
-              <ul style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+
+              <h5 className="text-xs font-bold text-white uppercase tracking-wider mb-4 font-mono">
+                Full-Stack Software Developer
+              </h5>
+              
+              <ul className="flex flex-col gap-3.5">
                 {[
-                  "Processing 1,000+ daily financial & registration logs securely.",
-                  "Automated billing pipelines capturing ~40% manual effort reduction.",
-                  "Refactored DB layers with index schemas, shaving latency by ~30%.",
-                  "Implemented real-time push notification microservices with zero message loss.",
+                  "Architect and scale core modules of internal hospital management systems processing 1,000+ daily transactions.",
+                  "Engineered automated billing integrations, saving ~40% manual operational processing effort.",
+                  "Refactored complex database schemas and index strategies to reduce query response times by ~30%.",
+                  "Built high-reliability real-time push notification pipelines utilizing Firebase FCM service workers.",
                 ].map((item, i) => (
-                  <li key={i} style={{ display: "flex", alignItems: "flex-start", gap: 10, fontSize: "0.83rem", color: "var(--text-secondary)", lineHeight: 1.6 }}>
-                    <span style={{ width: 5, height: 5, borderRadius: "50%", background: "#34d399", marginTop: 7, flexShrink: 0 }} />
-                    {item}
+                  <li key={i} className="flex items-start gap-3 text-[11px] text-slate-400 leading-relaxed">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 mt-1.5 flex-shrink-0" />
+                    <span>{item}</span>
                   </li>
                 ))}
               </ul>
             </motion.div>
 
-            {/* Education */}
-            <motion.div variants={iv} className="glass-card" style={{ padding: "24px 28px", position: "relative", overflow: "hidden" }}>
-              <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 3, background: "linear-gradient(90deg, #8b5cf6, #3b82f6)" }} />
-              <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 16 }}>
-                <GraduationCap size={18} style={{ color: "#a78bfa" }} />
-                <h3 style={{ fontSize: "0.7rem", fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.18em", color: "var(--text-secondary)" }}>
-                  Academic Background
-                </h3>
+            {/* Academic Matrix Card */}
+            <motion.div 
+              variants={itemVariants} 
+              className="zero-g-glass rounded-2xl p-6 relative overflow-hidden neon-glow-violet hover:scale-[1.01] transition-transform"
+            >
+              <span className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-violet-500 to-cyan-400" />
+              <div className="flex items-center gap-3 mb-5">
+                <div className="w-9 h-9 rounded-xl bg-violet-500/10 border border-violet-500/20 flex items-center justify-center text-violet-400 flex-shrink-0">
+                  <GraduationCap size={16} />
+                </div>
+                <div>
+                  <span className="text-[9px] uppercase font-mono tracking-widest text-slate-400 font-bold block mb-0.5">
+                    Academic Vector
+                  </span>
+                  <h4 className="text-xs font-bold text-white uppercase tracking-wider">
+                    {education.degree}
+                  </h4>
+                </div>
               </div>
-              <p style={{ fontSize: "0.95rem", fontWeight: 700, color: "var(--text-primary)", marginBottom: 4 }}>
-                {education.degree}
-              </p>
-              <p style={{ fontSize: "0.82rem", color: "var(--text-secondary)", marginBottom: 16 }}>
-                {education.university}
-              </p>
-              <div style={{ display: "flex", justifyContent: "space-between", fontSize: "0.8rem", color: "var(--text-secondary)", paddingTop: 14, borderTop: "1px solid var(--border)" }}>
-                <span>{education.period}</span>
-                <span style={{ fontWeight: 600, color: "var(--accent-blue)" }}>Graduated</span>
+              
+              <div className="flex justify-between items-center text-xs font-mono font-semibold text-slate-400 border-b border-white/5 pb-3 mb-3">
+                <span>{education.university}</span>
+                <span className="text-violet-400">{education.period}</span>
+              </div>
+              
+              <div className="flex items-center justify-between text-[11px] text-slate-400">
+                <span>GPA Score Matrix</span>
+                <span className="font-bold text-white font-mono">{education.gpa}</span>
               </div>
             </motion.div>
 
-            {/* Awards */}
-            <motion.div variants={iv} className="glass-card" style={{ padding: "24px 28px", position: "relative", overflow: "hidden" }}>
-              <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 3, background: "linear-gradient(90deg, #f59e0b, #ef4444)" }} />
-              <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 16 }}>
-                <Trophy size={18} style={{ color: "#fbbf24" }} />
-                <h3 style={{ fontSize: "0.7rem", fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.18em", color: "var(--text-secondary)" }}>
-                  Distinctions &amp; Honors
-                </h3>
+            {/* Honors and Accolades */}
+            <motion.div 
+              variants={itemVariants} 
+              className="zero-g-glass rounded-2xl p-5 relative overflow-hidden hover:scale-[1.01] transition-transform"
+            >
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-8 h-8 rounded-lg bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 flex-shrink-0">
+                  <Trophy size={14} />
+                </div>
+                <h4 className="text-xs font-bold text-white uppercase tracking-wider font-mono">
+                  Operational Awards
+                </h4>
               </div>
-              <ul style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+              <ul className="flex flex-col gap-2.5">
                 {awards.map((award, i) => (
-                  <li key={i} style={{ display: "flex", alignItems: "center", gap: 10, fontSize: "0.83rem", color: "var(--text-secondary)" }}>
-                    <span>🏆</span>
-                    <span style={{ fontWeight: 500 }}>{award}</span>
+                  <li key={i} className="flex items-center gap-3 text-[11px] text-slate-400">
+                    <span className="w-1 h-1 rounded-full bg-amber-400 flex-shrink-0" />
+                    <span>{award}</span>
                   </li>
                 ))}
               </ul>
             </motion.div>
 
           </div>
+
         </div>
       </motion.div>
     </section>

@@ -8,8 +8,7 @@ const certs = [
     issuer: "Udemy / Meta",
     year: "2023",
     icon: Award,
-    iconColor: '#3b82f6',
-    accentColor: '#3b82f6',
+    iconColor: '#8b5cf6',
     skills: ['React Hooks', 'Redux Toolkit', 'Context API'],
   },
   {
@@ -18,7 +17,6 @@ const certs = [
     year: "2023",
     icon: ShieldCheck,
     iconColor: '#10b981',
-    accentColor: '#10b981',
     skills: ['Node.js', 'MySQL', 'REST APIs'],
   },
   {
@@ -27,13 +25,19 @@ const certs = [
     year: "2022",
     icon: BookOpen,
     iconColor: '#06b6d4',
-    accentColor: '#06b6d4',
     skills: ['Query Optimization', 'Indexing', 'Schema Design'],
   },
 ];
 
-const cv = { hidden:{opacity:0}, visible:{opacity:1,transition:{staggerChildren:0.1}} };
-const iv = { hidden:{opacity:0,y:24}, visible:{opacity:1,y:0,transition:{duration:0.5,ease:'easeOut'}} };
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1, transition: { staggerChildren: 0.1 } }
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 80, damping: 15 } }
+};
 
 export default function Certifications() {
   const [ref, inView] = useInView();
@@ -41,59 +45,85 @@ export default function Certifications() {
   return (
     <section
       id="certifications"
-      style={{
-        background: 'var(--bg-secondary)',
-        paddingTop: 'clamp(80px, 10vw, 130px)',
-        paddingBottom: 'clamp(80px, 10vw, 130px)',
-        overflow: 'hidden',
-        position: 'relative',
-      }}
+      className="relative py-24 sm:py-32 w-full overflow-hidden bg-[#030712]"
     >
-      <div className="container" style={{ position:'relative',zIndex:1 }}>
-        <motion.div ref={ref} variants={cv} initial="hidden" animate={inView?'visible':'hidden'}>
+      {/* Subtle background glow */}
+      <div className="absolute top-1/2 left-1/4 w-[300px] h-[300px] bg-violet-600/5 rounded-full blur-[90px] pointer-events-none" />
+
+      <div className="max-w-6xl mx-auto px-6 relative z-10">
+        <motion.div ref={ref} variants={containerVariants} initial="hidden" animate={inView ? 'visible' : 'hidden'}>
 
           {/* Header */}
-          <motion.div variants={iv} style={{ marginBottom:56 }}>
-            <div className="section-tag"><span>●</span> Qualifications</div>
-            <h2 className="section-title">Certifications &amp; <span className="gradient-text">Badges</span></h2>
-            <p className="section-subtitle">Verified credentials backed by hands-on production experience.</p>
+          <motion.div variants={itemVariants} className="mb-14 text-left">
+            <div className="inline-flex items-center gap-2 text-xs font-mono font-bold tracking-[0.25em] uppercase text-cyan-400 mb-3">
+              <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
+              Credentials Verification
+            </div>
+            <h2 className="text-3xl sm:text-5xl font-black text-white leading-tight tracking-tight mb-5">
+              Badges &amp; <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 via-cyan-400 to-emerald-400">Verifications.</span>
+            </h2>
+            <p className="text-sm sm:text-base text-slate-400 max-w-xl leading-relaxed">
+              Verified certifications and core academic milestones backing up hands-on execution.
+            </p>
           </motion.div>
 
           {/* Cards Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {certs.map((cert, i) => {
               const Icon = cert.icon;
+              const bobAnimation = i % 2 === 0 ? "animate-drift-1" : "animate-drift-2";
+              
               return (
                 <motion.div
                   key={i}
-                  variants={iv}
-                  whileHover={{ y:-5, transition:{duration:0.18} }}
-                  className="glass-card"
-                  style={{ padding:'30px 28px', position:'relative', overflow:'hidden' }}
-                  onMouseEnter={e=>{e.currentTarget.style.boxShadow=`0 16px 44px ${cert.accentColor}15`;}}
-                  onMouseLeave={e=>{e.currentTarget.style.boxShadow='none';}}
+                  variants={itemVariants}
+                  whileHover={{ y: -6 }}
+                  className={`zero-g-glass rounded-3xl p-6 relative overflow-hidden transition-all duration-300 ${bobAnimation} hover:neon-glow-cyan`}
                 >
-                  <div style={{ position:'absolute',top:0,left:0,right:0,height:3,background:`linear-gradient(90deg,${cert.accentColor},transparent)` }} />
+                  {/* Top glowing colored strip */}
+                  <span 
+                    className="absolute top-0 left-0 right-0 h-[2px]" 
+                    style={{ background: `linear-gradient(90deg, ${cert.iconColor}, transparent)` }}
+                  />
 
-                  <div style={{ width:46,height:46,borderRadius:13,display:'flex',alignItems:'center',justifyContent:'center',marginBottom:20,background:`${cert.accentColor}12`,border:`1px solid ${cert.accentColor}28` }}>
-                    <Icon size={22} style={{ color:cert.iconColor }} />
+                  {/* Icon Frame */}
+                  <div 
+                    className="w-11 h-11 rounded-2xl flex items-center justify-center mb-5"
+                    style={{ 
+                      backgroundColor: `${cert.iconColor}12`,
+                      border: `1px solid ${cert.iconColor}25` 
+                    }}
+                  >
+                    <Icon size={18} style={{ color: cert.iconColor }} />
                   </div>
 
-                  <h3 style={{ fontSize:'0.95rem',fontWeight:800,color:'var(--text-primary)',marginBottom:6 }}>{cert.title}</h3>
-                  <p style={{ fontSize:'0.82rem',fontWeight:600,color:'var(--text-secondary)',marginBottom:18 }}>{cert.issuer}</p>
+                  <h3 className="text-sm font-bold text-white uppercase tracking-wide mb-1">{cert.title}</h3>
+                  <p className="text-xs text-slate-400 mb-4">{cert.issuer}</p>
 
-                  <div style={{ display:'flex',flexWrap:'wrap',gap:7,marginBottom:20 }}>
+                  {/* Skill Chips */}
+                  <div className="flex flex-wrap gap-1.5 mb-6">
                     {cert.skills.map(s => (
-                      <span key={s} style={{ fontSize:'0.68rem',padding:'4px 10px',borderRadius:6,fontWeight:600,background:`${cert.accentColor}0a`,border:`1px solid ${cert.accentColor}1a`,color:cert.accentColor }}>{s}</span>
+                      <span 
+                        key={s} 
+                        className="text-[9px] font-bold font-mono px-2.5 py-1 rounded"
+                        style={{
+                          backgroundColor: `${cert.iconColor}0a`,
+                          border: `1px solid ${cert.iconColor}1a`,
+                          color: cert.iconColor
+                        }}
+                      >
+                        {s}
+                      </span>
                     ))}
                   </div>
 
-                  <div style={{ display:'flex',alignItems:'center',justifyContent:'space-between',paddingTop:16,borderTop:'1px solid var(--border)' }}>
-                    <span style={{ fontSize:'0.68rem',fontWeight:700,textTransform:'uppercase',letterSpacing:'0.15em',color:'var(--text-muted)' }}>
+                  {/* Footer Stats */}
+                  <div className="flex items-center justify-between pt-4 border-t border-white/5 text-[9px] font-mono font-bold uppercase tracking-widest text-slate-500">
+                    <span>
                       Issued {cert.year}
                     </span>
-                    <span style={{ fontSize:'0.68rem',fontWeight:700,padding:'3px 9px',borderRadius:6,background:'rgba(16,185,129,0.08)',border:'1px solid rgba(16,185,129,0.2)',color:'#34d399' }}>
-                      Verified ✓
+                    <span className="px-2 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/25 text-emerald-400">
+                      VERIFIED ✓
                     </span>
                   </div>
                 </motion.div>
