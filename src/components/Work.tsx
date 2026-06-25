@@ -16,14 +16,14 @@ const projects = [
     category: "Secure Bidirectional Messaging",
     tools: "Socket.io, Firebase, React.js, Node.js",
     image: "/images/bond.png",
-    link: "https://chat-app-d3uk.onrender.com",
+    link: "https://github.com/Mekarthiakhi/Chat-App",
   },
   {
     title: "DSA Practice Visualizer",
     category: "Algorithm & Data Structure Learning",
     tools: "TypeScript, React, Framer Motion, Vite",
     image: "/images/broki.png",
-    link: "https://github.com/Mekarthiakhi/DSA-practice-visual",
+    link: "https://dsa-practice-visual.vercel.app",
   },
   {
     title: "Loan Management System",
@@ -42,9 +42,16 @@ const projects = [
   {
     title: "DealScout AI Dashboard",
     category: "AI-Powered Product Deal Aggregator",
-    tools: "React, Node.js, AI APIs, Vite",
+    tools: "React, Node.js, TypeScript, AI APIs",
     image: "/images/preview1.png",
-    link: "https://dealscout-1-oz24.onrender.com/",
+    link: "https://github.com/Mekarthiakhi/dealScout",
+  },
+  {
+    title: "Portfolio Website",
+    category: "3D Interactive Personal Portfolio",
+    tools: "React, Three.js, GSAP, TypeScript",
+    image: "/images/orrdr.png",
+    link: "https://github.com/Mekarthiakhi/my-portfolio",
   },
 ];
 
@@ -84,16 +91,18 @@ const Work = () => {
         <div className="carousel-wrapper">
           {/* Navigation Arrows */}
           <button
+            type="button"
             className="carousel-arrow carousel-arrow-left"
-            onClick={goToPrev}
+            onClick={(e) => { e.preventDefault(); e.stopPropagation(); goToPrev(); }}
             aria-label="Previous project"
             data-cursor="disable"
           >
             <MdArrowBack />
           </button>
           <button
+            type="button"
             className="carousel-arrow carousel-arrow-right"
-            onClick={goToNext}
+            onClick={(e) => { e.preventDefault(); e.stopPropagation(); goToNext(); }}
             aria-label="Next project"
             data-cursor="disable"
           >
@@ -143,10 +152,11 @@ const Work = () => {
           <div className="carousel-dots">
             {projects.map((_, index) => (
               <button
+                type="button"
                 key={index}
                 className={`carousel-dot ${index === currentIndex ? "carousel-dot-active" : ""
                   }`}
-                onClick={() => goToSlide(index)}
+                onClick={(e) => { e.preventDefault(); e.stopPropagation(); goToSlide(index); }}
                 aria-label={`Go to project ${index + 1}`}
                 data-cursor="disable"
               />

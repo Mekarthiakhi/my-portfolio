@@ -81,7 +81,7 @@
 .landing-intro h2 {
   margin: 0;
   color: var(--accentColor);
-  font-size: 22px;
+  font-size: 18px;
   font-weight: 300;
   letter-spacing: 2px;
 }
@@ -89,11 +89,12 @@
 .landing-intro h1 {
   margin: 0;
   letter-spacing: 2px;
-  font-size: 28px;
-  line-height: 28px;
+  font-size: 24px;
+  line-height: 1.1;
   font-weight: 500;
 }
 
+/* ── Landing Info (bottom text) ── */
 .landing-info {
   position: absolute;
   right: 50%;
@@ -101,10 +102,11 @@
   bottom: 40px;
   top: inherit;
   z-index: 9;
+  max-width: 100%;
 }
 
 .landing-info h3 {
-  font-size: 22px;
+  font-size: 16px;
   letter-spacing: 2px;
   font-weight: 300;
   color: var(--accentColor);
@@ -113,11 +115,10 @@
 
 .landing-info h2 {
   margin: 0;
-  margin-top: -20px;
-  margin-left: 20px;
+  margin-top: 4px;
   font-weight: 600;
-  font-size: 32px;
-  line-height: 40px;
+  font-size: 28px;
+  line-height: 1.2;
   position: relative;
   display: flex;
   flex-wrap: nowrap;
@@ -125,19 +126,26 @@
   letter-spacing: 2px;
 }
 
+/* System / Architect cycling text */
 h2.landing-info-h2 {
   color: #14b8a6;
-  font-size: 42px;
-  width: 120%;
+  font-size: 34px;
+  width: 100%;
   margin: 0;
   font-weight: 600;
   position: relative;
-  margin-left: -5px;
+  height: 1.3em;
+  overflow: hidden;
+}
+
+.landing-h2-1 {
+  position: relative;
 }
 
 .landing-h2-2 {
   position: absolute;
   top: 0;
+  left: 0;
 }
 
 .landing-info-h2::after {
@@ -146,11 +154,30 @@ h2.landing-info-h2 {
   width: 100%;
   height: 120%;
   z-index: 3;
-  background-image: linear-gradient(0deg, var(--backgroundColor) 40%, rgba(0, 0, 0, 0) 110%);
+  background-image: linear-gradient(0deg, var(--backgroundColor) 20%, rgba(0, 0, 0, 0) 100%);
+  bottom: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+/* Building Scalable / Web Solutions cycling text */
+.landing-info h2:last-child {
+  height: 1.3em;
+  overflow: hidden;
+  position: relative;
+}
+
+.landing-h2-info {
+  position: relative;
+}
+
+.landing-h2-info-1 {
+  position: absolute;
   top: 0;
   left: 0;
 }
 
+/* ── Small phones (< 500px) ── */
 @media screen and (min-width: 500px) {
   .landing-circle2 {
     display: block;
@@ -165,44 +192,46 @@ h2.landing-info-h2 {
   }
 
   .landing-intro h1 {
-    font-size: 30px;
-    line-height: 30px;
+    font-size: 28px;
+    line-height: 1.1;
   }
 
   .landing-info h2 {
-    font-size: 35px;
-    line-height: 40px;
+    font-size: 30px;
+    line-height: 1.2;
   }
 
   h2.landing-info-h2 {
-    font-size: 38px;
+    font-size: 34px;
   }
 }
 
+/* ── Tablets (768px+) ── */
 @media screen and (min-width: 768px) {
   .landing-intro h2 {
-    font-size: 25px;
+    font-size: 22px;
   }
 
   .landing-intro h1 {
-    font-size: 40px;
-    line-height: 35px;
+    font-size: 36px;
+    line-height: 1.1;
   }
 
   .landing-info h3 {
-    font-size: 25px;
+    font-size: 22px;
   }
 
   .landing-info h2 {
-    font-size: 45px;
-    line-height: 42px;
+    font-size: 38px;
+    line-height: 1.2;
   }
 
   h2.landing-info-h2 {
-    font-size: 55px;
+    font-size: 46px;
   }
 }
 
+/* ── Desktop (1025px+) ── */
 @media screen and (min-width: 1025px) {
   .landing-intro {
     top: 50%;
@@ -222,6 +251,7 @@ h2.landing-info-h2 {
   }
 }
 
+/* ── Large Desktop (1200px+) ── */
 @media screen and (min-width: 1200px) {
   .landing-intro {
     top: 50%;
@@ -241,26 +271,27 @@ h2.landing-info-h2 {
   }
 }
 
+/* ── XL Desktop (1600px+) ── */
 @media screen and (min-width: 1600px) {
   .landing-intro h2 {
-    font-size: 35px;
+    font-size: 30px;
   }
 
   .landing-intro h1 {
-    font-size: 60px;
-    line-height: 55px;
+    font-size: 52px;
+    line-height: 1.1;
   }
 
   .landing-info h3 {
-    font-size: 35px;
+    font-size: 30px;
   }
 
   .landing-info h2 {
-    font-size: 65px;
-    line-height: 62px;
+    font-size: 55px;
+    line-height: 1.2;
   }
 
   h2.landing-info-h2 {
-    font-size: 75px;
+    font-size: 65px;
   }
 }

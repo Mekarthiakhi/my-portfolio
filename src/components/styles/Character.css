@@ -1,0 +1,73 @@
+/* ── Character 3D Model ── */
+.character-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  height: 100svh;
+  z-index: 8;
+  pointer-events: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.character-model {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.character-model canvas {
+  width: 100% !important;
+  height: 100% !important;
+  pointer-events: auto;
+}
+
+.character-rim {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    0deg,
+    var(--backgroundColor) 0%,
+    rgba(10, 14, 23, 0.6) 30%,
+    transparent 60%
+  );
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(100%);
+}
+
+.character-hover {
+  position: absolute;
+  top: 25%;
+  left: 35%;
+  width: 30%;
+  height: 30%;
+  z-index: 3;
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+/* ── Mobile: center character in landing section ── */
+@media screen and (max-width: 1024px) {
+  .character-container {
+    position: relative;
+    height: 60vh;
+    height: 60svh;
+    z-index: 1;
+    margin-top: -60px;
+  }
+
+  .character-hover {
+    top: 15%;
+    left: 25%;
+    width: 50%;
+    height: 40%;
+  }
+}

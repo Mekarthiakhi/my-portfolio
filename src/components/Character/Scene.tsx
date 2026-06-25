@@ -11,6 +11,8 @@ import {
   handleTouchMove,
 } from "./utils/mouseUtils";
 import setAnimations from "./utils/animationUtils";
+import { initialFX } from "../utils/initialFX";
+import "../styles/Character.css";
 
 const Scene = () => {
   const canvasDiv = useRef<HTMLDivElement | null>(null);
@@ -65,11 +67,16 @@ const Scene = () => {
             setIsLoading(false);
             light.turnOnLights();
             animations.startIntro();
+            initialFX();
           }, 2500);
           window.addEventListener("resize", () =>
             handleResize(renderer, camera, canvasDiv, character)
           );
         }
+      }).catch((err) => {
+        console.error("Character loading failed:", err);
+        setIsLoading(false);
+        initialFX();
       });
 
       let mouse = { x: 0, y: 0 },
