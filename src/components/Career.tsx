@@ -15,57 +15,58 @@ const Career = () => {
           <div className="career-info-box">
             <div className="career-info-in">
               <div className="career-role">
-                <h4>Full Stack Developer</h4>
-                <h5>Current Role</h5>
+                <h4>Software Developer</h4>
+                <h5>Medicover Hospitals · Hyderabad</h5>
               </div>
-              <h3>NOW</h3>
+              <h3>Jan 2024 – Present</h3>
             </div>
             <p>
-              Building innovative web applications with modern tech stack.
-              Specializing in full-stack development, system design, and
-              creating scalable solutions for complex problems.
+              Building and maintaining production-grade hospital management systems serving thousands of patients daily.
+              Developed automated billing modules reducing manual processing effort by ~40%. Optimized complex SQL queries achieving ~30% database 
+              performance improvement. Led migration from legacy monolithic to modern React.js + Node.js architecture. Designed real-time push notification 
+              system using Firebase FCM and secure OTP-based authentication for patient workflows.
             </p>
           </div>
           <div className="career-info-box">
             <div className="career-info-in">
               <div className="career-role">
-                <h4>Senior Developer</h4>
-                <h5>5+ years · Remote</h5>
+                <h4>B.Tech Computer Science</h4>
+                <h5>Chandigarh University</h5>
               </div>
-              <h3>2021–24</h3>
+              <h3>2019–2023</h3>
             </div>
             <p>
-              Led development of multiple projects. Expertise in React, Node.js,
-              and database design. Mentored junior developers and contributed to
-              architectural decisions for scalable systems.
+              GPA: 7.3/10. Completed comprehensive computer science curriculum with focus on data structures, algorithms, 
+              system design, and software engineering principles. Developed strong foundation in full-stack development and 
+              problem-solving through competitive programming and project work.
             </p>
           </div>
           <div className="career-info-box">
             <div className="career-info-in">
               <div className="career-role">
-                <h4>Web Developer</h4>
-                <h5>Tech Startup</h5>
+                <h4>300+ DSA Problems Solved</h4>
+                <h5>LeetCode · Competitive Programming</h5>
               </div>
-              <h3>2019–21</h3>
+              <h3>Ongoing</h3>
             </div>
             <p>
-              Developed responsive web applications using modern frameworks.
-              Worked on performance optimization and user experience improvements.
-              Collaborated with product and design teams.
+              Consistent practice in data structures and algorithms covering arrays, strings, trees, graphs, and dynamic programming. 
+              Strong expertise in Big-O complexity analysis, optimal problem-solving, and pattern recognition. Demonstrated mastery through 
+              high-performance coding interviews and real-world system optimization.
             </p>
           </div>
           <div className="career-info-box">
             <div className="career-info-in">
               <div className="career-role">
-                <h4>Junior Developer</h4>
-                <h5>Web Agency</h5>
+                <h4>Skills & Strengths</h4>
+                <h5>Technologies & Expertise</h5>
               </div>
-              <h3>2018-19</h3>
+              <h3>Full Stack</h3>
             </div>
             <p>
-              Started career in web development. Built static and dynamic websites.
-              Learned best practices and gained expertise in HTML, CSS, and
-              JavaScript fundamentals.
+              Frontend: React.js, HTML5, CSS3, JavaScript, TypeScript, Redux. Backend: Node.js, Express.js, PHP, REST APIs, WebSockets. 
+              Database: MySQL, Firebase, MongoDB, Query Optimization, Indexing. Tools: Git, Vite, Docker, Redis, Socket.io. 
+              Strengths: Scalable System Design, Real-Time Systems, Performance Optimization, Database Architecture.
             </p>
           </div>
         </div>

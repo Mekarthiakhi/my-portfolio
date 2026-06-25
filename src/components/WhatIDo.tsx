@@ -88,20 +88,20 @@ const WhatIDo = () => {
 
             <div className="what-content-in">
               <h3>FRONTEND</h3>
-              <h4>Beautiful & Interactive Interfaces</h4>
+              <h4>Clean UI & Scalable Architecture</h4>
               <p>
-                Expert in creating responsive, accessible, and performant user
-                interfaces. Specializing in modern frameworks and best practices
-                for seamless user experiences.
+                Expert in building high-performance, responsive user interfaces with modern frameworks.
+                Specializing in React.js, component architecture, performance optimization, and creating
+                seamless user experiences. Proficient in HTML5, CSS3, JavaScript/TypeScript, Redux state management.
               </p>
               <h5>Skillset & tools</h5>
               <div className="what-content-flex">
-                <div className="what-tags">React</div>
-                <div className="what-tags">Next.js</div>
+                <div className="what-tags">React.js</div>
                 <div className="what-tags">TypeScript</div>
-                <div className="what-tags">Tailwind CSS</div>
-                <div className="what-tags">Responsive Design</div>
-                <div className="what-tags">Performance</div>
+                <div className="what-tags">HTML5 & CSS3</div>
+                <div className="what-tags">Redux</div>
+                <div className="what-tags">Framer Motion</div>
+                <div className="what-tags">Performance Optimization</div>
               </div>
               <div className="what-arrow"></div>
             </div>
