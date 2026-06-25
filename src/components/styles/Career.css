@@ -1,0 +1,131 @@
+/* ── Career Section ── */
+.career-section {
+  position: relative;
+  z-index: 1;
+  background-color: var(--backgroundColor);
+  padding: 100px 0;
+}
+
+.career-container {
+  max-width: var(--cMaxWidth);
+  margin: auto;
+}
+
+.career-container h2 {
+  font-size: 70px;
+  font-weight: 500;
+  margin: 0 0 50px 0;
+  line-height: 1.2;
+}
+
+.career-container h2 span {
+  color: var(--accentColor);
+}
+
+.career-info {
+  display: flex;
+  gap: 40px;
+}
+
+.career-timeline {
+  flex-shrink: 0;
+  width: 30px;
+  position: relative;
+}
+
+.career-dot {
+  width: 20px;
+  height: 20px;
+  background: var(--accentColor);
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  left: 5px;
+  box-shadow: 0 0 20px rgba(94, 234, 212, 0.3);
+}
+
+.career-timeline::before {
+  content: "";
+  position: absolute;
+  width: 1px;
+  height: 100%;
+  background: linear-gradient(to bottom, var(--accentColor), transparent);
+  left: 14px;
+  top: 30px;
+}
+
+.career-info-box {
+  flex: 1;
+  padding: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.02);
+  transition: all 0.3s ease;
+  margin-bottom: 30px;
+}
+
+.career-info-box:hover {
+  border-color: var(--accentColor);
+  background: rgba(94, 234, 212, 0.05);
+  box-shadow: 0 0 20px rgba(94, 234, 212, 0.1);
+}
+
+.career-info-in {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.career-role h4 {
+  font-size: 20px;
+  margin: 0 0 5px 0;
+  font-weight: 500;
+}
+
+.career-role h5 {
+  font-size: 14px;
+  margin: 0;
+  opacity: 0.6;
+  font-weight: 400;
+}
+
+.career-info-in h3 {
+  font-size: 14px;
+  margin: 0;
+  color: var(--accentColor);
+  font-weight: 400;
+  letter-spacing: 1px;
+}
+
+.career-info-box p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #adacac;
+  margin: 0;
+  font-weight: 300;
+}
+
+@media screen and (max-width: 768px) {
+  .career-section {
+    padding: 60px 0;
+  }
+
+  .career-container h2 {
+    font-size: 40px;
+  }
+
+  .career-info {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .career-timeline {
+    display: none;
+  }
+
+  .career-info-box {
+    margin-bottom: 20px;
+    padding: 20px;
+  }
+}

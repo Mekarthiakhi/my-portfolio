@@ -1,0 +1,43 @@
+/* ── About Section ── */
+.about-section {
+  position: relative;
+  z-index: 1;
+  background-color: var(--backgroundColor);
+  padding: 100px 0;
+}
+
+.about-me {
+  width: var(--cWidth);
+  max-width: var(--cMaxWidth);
+  margin: auto;
+}
+
+.about-me .title {
+  font-size: 40px;
+  font-weight: 500;
+  margin-bottom: 30px;
+  color: var(--accentColor);
+}
+
+.about-me .para {
+  font-size: 18px;
+  line-height: 1.8;
+  color: #adacac;
+  max-width: 800px;
+  font-weight: 300;
+  margin: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .about-section {
+    padding: 60px 0;
+  }
+
+  .about-me .title {
+    font-size: 28px;
+  }
+
+  .about-me .para {
+    font-size: 16px;
+  }
+}

@@ -1,0 +1,190 @@
+/* ── What I Do Section ── */
+.whatIDO {
+  background-color: var(--backgroundColor);
+  padding: 100px 0;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  gap: 60px;
+}
+
+.what-box {
+  flex: 1;
+  width: var(--cWidth);
+  max-width: var(--cMaxWidth);
+  margin: auto;
+}
+
+.what-box:first-child .title {
+  font-size: 70px;
+  font-weight: 500;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.hat-h2,
+.do-h2 {
+  color: var(--accentColor);
+}
+
+.what-box-in {
+  display: flex;
+  gap: 30px;
+  position: relative;
+  height: 600px;
+}
+
+.what-content {
+  flex: 1;
+  position: relative;
+  padding: 40px;
+  border: 1px dashed rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.what-content:hover {
+  border-color: var(--accentColor);
+  background: rgba(94, 234, 212, 0.05);
+}
+
+.what-content-active {
+  border: 1px solid var(--accentColor) !important;
+  background: rgba(94, 234, 212, 0.1) !important;
+}
+
+.what-border1,
+.what-border2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0.3;
+}
+
+.what-corner {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-top: 2px solid var(--accentColor);
+  border-right: 2px solid var(--accentColor);
+  top: -1px;
+  right: -1px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.what-content-active .what-corner {
+  opacity: 1;
+}
+
+.what-content-in {
+  position: relative;
+  z-index: 1;
+}
+
+.what-content-in h3 {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--accentColor);
+  margin: 0 0 10px 0;
+  letter-spacing: 1px;
+}
+
+.what-content-in h4 {
+  font-size: 18px;
+  font-weight: 500;
+  margin: 0 0 15px 0;
+}
+
+.what-content-in p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #adacac;
+  margin: 0 0 20px 0;
+  font-weight: 300;
+}
+
+.what-content-in h5 {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  opacity: 0.6;
+  margin: 0 0 15px 0;
+}
+
+.what-content-flex {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.what-tags {
+  display: inline-block;
+  padding: 6px 12px;
+  border: 1px solid rgba(94, 234, 212, 0.3);
+  border-radius: 20px;
+  font-size: 12px;
+  background: rgba(94, 234, 212, 0.05);
+  color: var(--accentColor);
+  transition: all 0.3s ease;
+}
+
+.what-tags:hover {
+  background: rgba(94, 234, 212, 0.15);
+  border-color: var(--accentColor);
+}
+
+.what-arrow {
+  position: absolute;
+  width: 30px;
+  height: 2px;
+  background: var(--accentColor);
+  bottom: 40px;
+  right: 40px;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+}
+
+.what-content-active .what-arrow {
+  transform: scaleX(1);
+}
+
+.what-sibling {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+@media screen and (max-width: 1024px) {
+  .whatIDO {
+    flex-direction: column;
+    padding: 60px 0;
+  }
+
+  .what-box:first-child .title {
+    font-size: 40px;
+  }
+
+  .what-box-in {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .what-content {
+    min-height: 300px;
+  }
+
+  .what-noTouch {
+    display: none;
+  }
+
+  .what-noTouch:first-of-type {
+    display: block;
+  }
+}

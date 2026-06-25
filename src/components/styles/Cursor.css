@@ -1,0 +1,44 @@
+/* ── Custom Cursor ── */
+.cursor-main {
+  width: 30px;
+  height: 30px;
+  border: 2px solid var(--accentColor);
+  border-radius: 50%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 1000;
+  transform: translate(-50%, -50%);
+  transition: all 0.1s ease-out;
+  opacity: 0.8;
+}
+
+.cursor-main::after {
+  content: "";
+  width: 6px;
+  height: 6px;
+  background: var(--accentColor);
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.cursor-icons {
+  width: var(--cursorH, 50px);
+  height: var(--cursorH, 50px);
+  border-color: var(--accentColor);
+  opacity: 0.5;
+}
+
+.cursor-disable {
+  display: none;
+}
+
+@media (hover: none) {
+  .cursor-main {
+    display: none;
+  }
+}

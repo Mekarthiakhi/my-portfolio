@@ -1,0 +1,114 @@
+/* ── Social Icons Section ── */
+.icons-section {
+  position: fixed;
+  right: 30px;
+  bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  z-index: 40;
+}
+
+.social-icons {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.social-icons span {
+  width: 50px;
+  height: 50px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.social-icons span:hover {
+  border-color: var(--accentColor);
+  background: rgba(94, 234, 212, 0.1);
+}
+
+.social-icons span a {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  position: relative;
+  --siLeft: 25px;
+  --siTop: 25px;
+}
+
+.social-icons span a::before {
+  content: "";
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background: var(--accentColor);
+  border-radius: 50%;
+  top: var(--siTop);
+  left: var(--siLeft);
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  z-index: -1;
+  transition: opacity 0.3s ease;
+}
+
+.social-icons span:hover a::before {
+  opacity: 0.2;
+}
+
+.resume-button {
+  width: 50px;
+  height: 50px;
+  border: 1px solid var(--accentColor);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: var(--accentColor);
+  text-decoration: none;
+  font-size: 16px;
+  gap: 8px;
+  position: relative;
+  overflow: hidden;
+}
+
+.resume-button:hover {
+  background: rgba(94, 234, 212, 0.1);
+  box-shadow: 0 0 20px rgba(94, 234, 212, 0.2);
+}
+
+.resume-button span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media screen and (max-width: 1024px) {
+  .icons-section {
+    bottom: 20px;
+    right: 20px;
+    gap: 20px;
+  }
+
+  .social-icons span {
+    width: 40px;
+    height: 40px;
+  }
+
+  .resume-button {
+    width: 40px;
+    height: 40px;
+    font-size: 14px;
+  }
+}
