@@ -50,29 +50,16 @@ export const handleHeadRotation = (
       mouseX * maxRotation,
       interpolationY
     );
-    let minRotationX = -0.3;
-    let maxRotationX = 0.4;
-    if (mouseY > minRotationX) {
-      if (mouseY < maxRotationX) {
-        headBone.rotation.x = lerp(
-          headBone.rotation.x,
-          -mouseY - 0.5 * maxRotation,
-          interpolationX
-        );
-      } else {
-        headBone.rotation.x = lerp(
-          headBone.rotation.x,
-          -maxRotation - 0.5 * maxRotation,
-          interpolationX
-        );
-      }
-    } else {
-      headBone.rotation.x = lerp(
-        headBone.rotation.x,
-        -minRotationX - 0.5 * maxRotation,
-        interpolationX
-      );
-    }
+    const targetRotationX = THREE.MathUtils.clamp(
+      -mouseY * maxRotation,
+      -maxRotation,
+      maxRotation
+    );
+    headBone.rotation.x = lerp(
+      headBone.rotation.x,
+      targetRotationX,
+      interpolationX
+    );
   } else {
     if (window.innerWidth > 1024) {
       headBone.rotation.x = lerp(headBone.rotation.x, -0.4, 0.03);

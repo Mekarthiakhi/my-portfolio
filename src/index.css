@@ -33,8 +33,14 @@ h6 {
   font-family: "Geist", sans-serif;
 }
 
+html {
+  min-height: 100%;
+}
+
 body {
-  overflow: hidden;
+  min-height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 a {

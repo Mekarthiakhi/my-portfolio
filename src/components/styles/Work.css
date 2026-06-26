@@ -42,6 +42,7 @@
 
 .carousel-slide {
   min-width: 100%;
+  max-width: 100%;
   flex-shrink: 0;
   box-sizing: border-box;
   padding: 50px 0;
@@ -194,6 +195,37 @@
 
   .carousel-slide {
     padding: 30px 10px;
+    min-width: 100%;
+    max-width: 100%;
+  }
+
+  .carousel-content {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 30px;
+  }
+
+  .carousel-info {
+    width: 100%;
+  }
+
+  .carousel-image-wrapper {
+    width: 100%;
+  }
+
+  .carousel-arrow {
+    position: static;
+    margin: 0 auto;
+  }
+
+  .carousel-arrow-left,
+  .carousel-arrow-right {
+    transform: none;
+  }
+
+  .carousel-dots {
+    flex-wrap: wrap;
+    gap: 10px;
   }
 
   .work-section h2 {

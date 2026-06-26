@@ -1,7 +1,38 @@
+import { useState, ChangeEvent, FormEvent } from "react";
 import { MdArrowOutward, MdCopyright } from "react-icons/md";
 import "./styles/Contact.css";
 
 const Contact = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+  const [status, setStatus] = useState("");
+
+  const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = event.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (!formData.name || !formData.email || !formData.message) {
+      setStatus("Please complete all fields before sending.");
+      return;
+    }
+
+    const recipient = "akhileshmekarthi74@gmail.com";
+    const subject = `Portfolio message from ${formData.name}`;
+    const body = `Name: ${formData.name}%0D%0AEmail: ${formData.email}%0D%0A%0D%0A${formData.message}`;
+    const mailtoURL = `mailto:${recipient}?subject=${encodeURIComponent(
+      subject
+    )}&body=${body}`;
+
+    window.location.href = mailtoURL;
+    setStatus("Opening your email client. If it doesn't open, please send directly to akhileshmekarthi74@gmail.com.");
+  };
+
   return (
     <div className="contact-section section-container" id="contact">
       <div className="contact-container">
@@ -21,10 +52,7 @@ const Contact = () => {
             </p>
             <h4>Email</h4>
             <p>
-              <a
-                href="mailto:akhileshmekarthi74@gmail.com"
-                data-cursor="disable"
-              >
+              <a href="mailto:akhileshmekarthi74@gmail.com" data-cursor="disable">
                 akhileshmekarthi74@gmail.com
               </a>
             </p>
@@ -61,14 +89,53 @@ const Contact = () => {
               LeetCode <MdArrowOutward />
             </a>
           </div>
-          <div className="contact-box">
-            <h2>
-              Designed and Developed <br /> by <span>Akhilesh Mekarthi</span>
-            </h2>
-            <h5>
-              <MdCopyright /> 2026
-            </h5>
+          <div className="contact-box contact-form-box">
+            <h4>Send a Message</h4>
+            <form className="contact-form" onSubmit={handleSubmit}>
+              <label>
+                Name
+                <input
+                  type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  placeholder="Your name"
+                />
+              </label>
+              <label>
+                Email
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  placeholder="Your email"
+                />
+              </label>
+              <label>
+                Message
+                <textarea
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  placeholder="Write your message here"
+                  rows={5}
+                />
+              </label>
+              <button type="submit" className="contact-submit">
+                Send via Email
+              </button>
+              {status && <p className="contact-status">{status}</p>}
+            </form>
           </div>
+        </div>
+        <div className="contact-credit">
+          <h2>
+            Designed and Developed <br /> by <span>Akhilesh Mekarthi</span>
+          </h2>
+          <h5>
+            <MdCopyright /> 2026
+          </h5>
         </div>
       </div>
     </div>
