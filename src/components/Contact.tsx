@@ -79,15 +79,7 @@ const Contact = () => {
             >
               LinkedIn <MdArrowOutward />
             </a>
-            <a
-              href="https://leetcode.com/akhileshmekarthi"
-              target="_blank"
-              rel="noreferrer"
-              data-cursor="disable"
-              className="contact-social"
-            >
-              LeetCode <MdArrowOutward />
-            </a>
+
           </div>
           <div className="contact-box contact-form-box">
             <h4>Send a Message</h4>

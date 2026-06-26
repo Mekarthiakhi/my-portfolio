@@ -77,10 +77,8 @@
   transition: all 0.3s ease;
   color: var(--accentColor);
   text-decoration: none;
-  font-size: 16px;
-  gap: 8px;
+  font-size: 20px;
   position: relative;
-  overflow: hidden;
 }
 
 .resume-button:hover {
@@ -88,10 +86,23 @@
   box-shadow: 0 0 20px rgba(94, 234, 212, 0.2);
 }
 
-.resume-button span {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.resume-button::after {
+  content: "Resume";
+  position: absolute;
+  right: calc(100% + 12px);
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 12px;
+  color: var(--accentColor);
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  letter-spacing: 1px;
+}
+
+.resume-button:hover::after {
+  opacity: 1;
 }
 
 @media screen and (max-width: 1024px) {

@@ -41,20 +41,7 @@ const Career = () => {
               problem-solving through competitive programming and project work.
             </p>
           </div>
-          <div className="career-info-box">
-            <div className="career-info-in">
-              <div className="career-role">
-                <h4>300+ DSA Problems Solved</h4>
-                <h5>LeetCode · Competitive Programming</h5>
-              </div>
-              <h3>Ongoing</h3>
-            </div>
-            <p>
-              Consistent practice in data structures and algorithms covering arrays, strings, trees, graphs, and dynamic programming. 
-              Strong expertise in Big-O complexity analysis, optimal problem-solving, and pattern recognition. Demonstrated mastery through 
-              high-performance coding interviews and real-world system optimization.
-            </p>
-          </div>
+
           <div className="career-info-box">
             <div className="career-info-in">
               <div className="career-role">

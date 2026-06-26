@@ -1,8 +1,6 @@
 import {
   FaGithub,
-  FaInstagram,
   FaLinkedinIn,
-  FaYoutube,
 } from "react-icons/fa6";
 import "./styles/SocialIcons.css";
 import { TbNotes } from "react-icons/tb";
@@ -77,35 +75,30 @@ const SocialIcons = () => {
             <FaLinkedinIn />
           </a>
         </span>
-        <span>
-          <a
-            href="https://www.youtube.com/@mekarthiakhi"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <FaYoutube />
-          </a>
-        </span>
-        <span>
-          <a
-            href="https://www.instagram.com/mekarthiakhi/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <FaInstagram />
-          </a>
-        </span>
+
       </div>
       <a
         className="resume-button"
-        href="/resume.pdf"
-        target="_blank"
+        href="/akki_new_resume_1.pdf"
+        download="akki_new_resume_1.pdf"
         rel="noreferrer"
+        onClick={(e) => {
+          e.preventDefault();
+          fetch("/akki_new_resume_1.pdf")
+            .then((res) => res.blob())
+            .then((blob) => {
+              const url = window.URL.createObjectURL(blob);
+              const a = document.createElement("a");
+              a.href = url;
+              a.download = "akki_new_resume_1.pdf";
+              document.body.appendChild(a);
+              a.click();
+              document.body.removeChild(a);
+              window.URL.revokeObjectURL(url);
+            });
+        }}
       >
-        <HoverLinks text="RESUME" />
-        <span>
-          <TbNotes />
-        </span>
+        <TbNotes />
       </a>
     </div>
   );

@@ -1,7 +1,7 @@
 /* ── Career Section ── */
 .career-section {
   position: relative;
-  z-index: 1;
+  z-index: 10;
   background-color: var(--backgroundColor);
   padding: 100px 0;
 }
@@ -108,11 +108,12 @@
 
 @media screen and (max-width: 768px) {
   .career-section {
-    padding: 60px 0;
+    padding: 30px 0;
   }
 
   .career-container h2 {
     font-size: 40px;
+    margin-bottom: 20px;
   }
 
   .career-info {
