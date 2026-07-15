@@ -26,8 +26,9 @@ const textures = imageUrls.map((url) => textureLoader.load(url));
 
 const sphereGeometry = new THREE.SphereGeometry(1, 28, 28);
 
-const spheres = [...Array(30)].map(() => ({
+const spheres = [...Array(30)].map((_v, i) => ({
   scale: [0.7, 1, 0.8, 1, 1][Math.floor(Math.random() * 5)],
+  materialIndex: i % textures.length,
 }));
 
 type SphereProps = {
@@ -36,6 +37,8 @@ type SphereProps = {
   r?: typeof THREE.MathUtils.randFloatSpread;
   material: THREE.MeshPhysicalMaterial;
   isActive: boolean;
+  isAligned: boolean;
+  targetPos: THREE.Vector3;
 };
 
 function SphereGeo({
@@ -44,24 +47,42 @@ function SphereGeo({
   r = THREE.MathUtils.randFloatSpread,
   material,
   isActive,
+  isAligned,
+  targetPos,
 }: SphereProps) {
   const api = useRef<RapierRigidBody | null>(null);
 
   useFrame((_state, delta) => {
-    if (!isActive) return;
+    if (!isActive || !api.current) return;
     delta = Math.min(0.1, delta);
-    const impulse = vec
-      .copy(api.current!.translation())
-      .normalize()
-      .multiply(
-        new THREE.Vector3(
-          -50 * delta * scale,
-          -150 * delta * scale,
-          -50 * delta * scale
-        )
-      );
 
-    api.current?.applyImpulse(impulse, true);
+    if (isAligned) {
+      const currentPos = api.current.translation();
+      const targetVec = new THREE.Vector3().copy(targetPos);
+      const direction = targetVec.sub(currentPos);
+      
+      const springForce = direction.multiplyScalar(20 * scale);
+      
+      const currentVel = api.current.linvel();
+      const dampingForce = new THREE.Vector3(currentVel.x, currentVel.y, currentVel.z).multiplyScalar(-5 * scale);
+      
+      const totalForce = springForce.add(dampingForce);
+      
+      api.current.applyImpulse(totalForce.multiplyScalar(delta * 10), true);
+    } else {
+      const impulse = vec
+        .copy(api.current.translation())
+        .normalize()
+        .multiply(
+          new THREE.Vector3(
+            -50 * delta * scale,
+            -150 * delta * scale,
+            -50 * delta * scale
+          )
+        );
+
+      api.current.applyImpulse(impulse, true);
+    }
   });
 
   return (
@@ -94,13 +115,18 @@ function SphereGeo({
 type PointerProps = {
   vec?: THREE.Vector3;
   isActive: boolean;
+  isAligned: boolean;
 };
 
-function Pointer({ vec = new THREE.Vector3(), isActive }: PointerProps) {
+function Pointer({ vec = new THREE.Vector3(), isActive, isAligned }: PointerProps) {
   const ref = useRef<RapierRigidBody>(null);
 
   useFrame(({ pointer, viewport }) => {
-    if (!isActive) return;
+    if (!isActive || !ref.current) return;
+    if (isAligned) {
+      ref.current.setNextKinematicTranslation(new THREE.Vector3(100, 100, 100));
+      return;
+    }
     const targetVec = vec.lerp(
       new THREE.Vector3(
         (pointer.x * viewport.width) / 2,
@@ -109,7 +135,7 @@ function Pointer({ vec = new THREE.Vector3(), isActive }: PointerProps) {
       ),
       0.2
     );
-    ref.current?.setNextKinematicTranslation(targetVec);
+    ref.current.setNextKinematicTranslation(targetVec);
   });
 
   return (
@@ -126,6 +152,7 @@ function Pointer({ vec = new THREE.Vector3(), isActive }: PointerProps) {
 
 const TechStack = () => {
   const [isActive, setIsActive] = useState(false);
+  const [isAligned, setIsAligned] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -167,8 +194,27 @@ const TechStack = () => {
   }, []);
 
   return (
-    <div className="techstack">
-      <h2> My Techstack</h2>
+    <div className="techstack" style={{ position: "relative" }}>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "0 5%", margin: "0 auto", position: "relative", zIndex: 20 }}>
+        <h2> My Techstack</h2>
+        <button 
+          onClick={() => setIsAligned(!isAligned)}
+          style={{ 
+            padding: "10px 24px", 
+            borderRadius: "8px", 
+            background: "var(--accentColor)", 
+            color: "#0a0e17", 
+            border: "none", 
+            cursor: "pointer", 
+            fontWeight: 600,
+            fontSize: "14px",
+            transition: "all 0.3s ease",
+            marginBottom: "30px"
+          }}
+        >
+          {isAligned ? "Scatter" : "Align Stack"}
+        </button>
+      </div>
 
       <Canvas
         shadows
@@ -188,15 +234,28 @@ const TechStack = () => {
         />
         <directionalLight position={[0, 5, -4]} intensity={2} />
         <Physics gravity={[0, 0, 0]}>
-          <Pointer isActive={isActive} />
-          {spheres.map((props, i) => (
-            <SphereGeo
-              key={i}
-              {...props}
-              material={materials[Math.floor(Math.random() * materials.length)]}
-              isActive={isActive}
-            />
-          ))}
+          <Pointer isActive={isActive} isAligned={isAligned} />
+          {spheres.map((props, i) => {
+            const cols = 6;
+            const col = i % cols;
+            const row = Math.floor(i / cols);
+            const totalRows = Math.ceil(spheres.length / cols);
+            const targetPos = new THREE.Vector3(
+              (col - (cols - 1) / 2) * 2.2,
+              ((totalRows - 1) / 2 - row) * 2.2,
+              0
+            );
+            return (
+              <SphereGeo
+                key={i}
+                {...props}
+                material={materials[props.materialIndex]}
+                isActive={isActive}
+                isAligned={isAligned}
+                targetPos={targetPos}
+              />
+            );
+          })}
         </Physics>
         <Environment
           files="/models/char_enviorment.hdr"

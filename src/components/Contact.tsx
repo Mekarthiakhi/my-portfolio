@@ -22,33 +22,13 @@ const Contact = () => {
       return;
     }
 
-    setStatus("Sending...");
-
-    try {
-      const response = await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify({
-          access_key: "YOUR_WEB3FORMS_ACCESS_KEY_HERE", // TODO: Replace with actual Web3Forms access key
-          name: formData.name,
-          email: formData.email,
-          message: formData.message,
-        }),
-      });
-
-      const result = await response.json();
-      if (result.success) {
-        setStatus("Message sent successfully!");
-        setFormData({ name: "", email: "", message: "" });
-      } else {
-        setStatus("Failed to send message. Please try again.");
-      }
-    } catch (error) {
-      setStatus("An error occurred. Please try again later.");
-    }
+    const subject = encodeURIComponent(`Portfolio Contact from ${formData.name}`);
+    const body = encodeURIComponent(
+      `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+    );
+    window.open(`mailto:akhileshmekarthi74@gmail.com?subject=${subject}&body=${body}`, "_self");
+    setStatus("Opening your email client...");
+    setFormData({ name: "", email: "", message: "" });
   };
 
   return (
