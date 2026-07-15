@@ -18,13 +18,7 @@ const projects = [
     image: "/images/bond.png",
     link: "https://github.com/Mekarthiakhi/Chat-App",
   },
-  {
-    title: "DSA Practice Visualizer",
-    category: "Algorithm & Data Structure Learning",
-    tools: "TypeScript, React, Framer Motion, Vite",
-    image: "/images/broki.png",
-    link: "https://dsa-practice-visual.vercel.app",
-  },
+
   {
     title: "Loan Management System",
     category: "Financial Dashboard & Analytics",

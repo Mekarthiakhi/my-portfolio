@@ -70,8 +70,8 @@ const setAnimations = (gltf: GLTF) => {
         isHovering = true;
         eyeBrowUpAction.reset();
         eyeBrowUpAction.enabled = true;
-        eyeBrowUpAction.setEffectiveWeight(4);
-        eyeBrowUpAction.fadeIn(0.5).play();
+        eyeBrowUpAction.setEffectiveWeight(1);
+        eyeBrowUpAction.fadeIn(0.3).play();
       }
     };
     const onLeaveFace = () => {

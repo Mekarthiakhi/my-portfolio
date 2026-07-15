@@ -3,16 +3,21 @@
   background-color: var(--backgroundColor);
   padding: 100px 0;
   position: relative;
-  z-index: 1;
+  z-index: 10;
   display: flex;
   gap: 60px;
+  width: var(--cWidth);
+  max-width: var(--cMaxWidth);
+  margin: auto;
 }
 
 .what-box {
   flex: 1;
-  width: var(--cWidth);
-  max-width: var(--cMaxWidth);
-  margin: auto;
+}
+
+.what-box:first-child {
+  flex: none;
+  width: auto;
 }
 
 .what-box:first-child .title {
@@ -31,7 +36,7 @@
   display: flex;
   gap: 30px;
   position: relative;
-  height: 600px;
+  height: 500px;
 }
 
 .what-content {
@@ -164,7 +169,7 @@
 @media screen and (max-width: 1024px) {
   .whatIDO {
     flex-direction: column;
-    padding: 60px 0;
+    padding: 30px 0;
   }
 
   .what-box:first-child .title {
@@ -177,11 +182,11 @@
   }
 
   .what-content {
-    min-height: 300px;
+    min-height: auto;
   }
 
   .what-noTouch {
-    display: none;
+    display: block;
   }
 
   .what-noTouch:first-of-type {

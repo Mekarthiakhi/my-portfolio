@@ -59,11 +59,11 @@
 @media screen and (max-width: 1024px) {
   .character-container {
     position: relative;
-    height: 60vh;
-    height: 60svh;
+    height: 45vh;
+    height: 45svh;
     z-index: 1;
     margin-top: 0;
-    padding-top: 20px;
+    padding-top: 0;
   }
 
   .character-hover {

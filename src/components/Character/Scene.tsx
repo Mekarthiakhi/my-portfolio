@@ -27,12 +27,14 @@ const Scene = () => {
       const aspect = container.width / container.height;
       const scene = sceneRef.current;
 
+      const dpr = Math.min(window.devicePixelRatio, 2);
       const renderer = new THREE.WebGLRenderer({
         alpha: true,
-        antialias: true,
+        antialias: dpr <= 1,
+        powerPreference: "high-performance",
       });
       renderer.setSize(container.width, container.height);
-      renderer.setPixelRatio(window.devicePixelRatio);
+      renderer.setPixelRatio(dpr);
       renderer.toneMapping = THREE.ACESFilmicToneMapping;
       renderer.toneMappingExposure = 1;
       canvasDiv.current.appendChild(renderer.domElement);
@@ -104,8 +106,16 @@ const Scene = () => {
         landingDiv.addEventListener("touchmove", onTouchMove, { passive: true });
         landingDiv.addEventListener("touchend", onTouchEnd);
       }
+      let isVisible = true;
+      const observer = new IntersectionObserver(
+        ([entry]) => { isVisible = entry.isIntersecting; },
+        { threshold: 0 }
+      );
+      if (canvasDiv.current) observer.observe(canvasDiv.current);
+
       const animate = () => {
         animationFrameId = requestAnimationFrame(animate);
+        if (!isVisible) return; // skip render when off-screen
         if (headBone) {
           handleHeadRotation(
             headBone,
@@ -125,6 +135,7 @@ const Scene = () => {
       };
       animate();
       return () => {
+        observer.disconnect();
         if (animationFrameId !== null) {
           cancelAnimationFrame(animationFrameId);
         }
