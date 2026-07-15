@@ -9,6 +9,7 @@ import SocialIcons from "./SocialIcons";
 import WhatIDo from "./WhatIDo";
 import Work from "./Work";
 import setSplitText from "./utils/splitText";
+import { useLoading } from "./context/LoadingProvider";
 
 const TechStack = lazy(() => import("./TechStack"));
 
@@ -16,18 +17,26 @@ const MainContainer = ({ children }: PropsWithChildren) => {
   const [isDesktopView, setIsDesktopView] = useState<boolean>(
     window.innerWidth > 1024
   );
+  const { isLoading } = useLoading();
 
   useEffect(() => {
     const resizeHandler = () => {
       setSplitText();
       setIsDesktopView(window.innerWidth > 1024);
     };
-    resizeHandler();
+    if (!isLoading) {
+      resizeHandler();
+      setTimeout(() => {
+        import("gsap/ScrollTrigger").then((module) => {
+          module.ScrollTrigger.refresh();
+        });
+      }, 100);
+    }
     window.addEventListener("resize", resizeHandler);
     return () => {
       window.removeEventListener("resize", resizeHandler);
     };
-  }, [isDesktopView]);
+  }, [isDesktopView, isLoading]);
 
   return (
     <div className="container-main">

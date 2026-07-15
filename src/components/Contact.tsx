@@ -15,22 +15,40 @@ const Contact = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (!formData.name || !formData.email || !formData.message) {
       setStatus("Please complete all fields before sending.");
       return;
     }
 
-    const recipient = "akhileshmekarthi74@gmail.com";
-    const subject = `Portfolio message from ${formData.name}`;
-    const body = `Name: ${formData.name}%0D%0AEmail: ${formData.email}%0D%0A%0D%0A${formData.message}`;
-    const mailtoURL = `mailto:${recipient}?subject=${encodeURIComponent(
-      subject
-    )}&body=${body}`;
+    setStatus("Sending...");
 
-    window.location.href = mailtoURL;
-    setStatus("Opening your email client. If it doesn't open, please send directly to akhileshmekarthi74@gmail.com.");
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: "YOUR_WEB3FORMS_ACCESS_KEY_HERE", // TODO: Replace with actual Web3Forms access key
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+        }),
+      });
+
+      const result = await response.json();
+      if (result.success) {
+        setStatus("Message sent successfully!");
+        setFormData({ name: "", email: "", message: "" });
+      } else {
+        setStatus("Failed to send message. Please try again.");
+      }
+    } catch (error) {
+      setStatus("An error occurred. Please try again later.");
+    }
   };
 
   return (
