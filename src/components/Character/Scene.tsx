@@ -74,7 +74,7 @@ const Scene = () => {
             light.turnOnLights();
             animations.startIntro();
             initialFX();
-          }, 2500);
+          }, 100);
           window.addEventListener("resize", resizeHandler);
           resizeHandler();
         }

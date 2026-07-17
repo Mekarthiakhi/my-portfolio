@@ -7,11 +7,14 @@ export function initialFX() {
   if (smoother) smoother.paused(false);
   const mainEl = document.getElementById("root");
   if (mainEl) mainEl.classList.add("main-active");
-  gsap.to("body", {
-    backgroundColor: "#0a0e17",
-    duration: 0.5,
-    delay: 1,
-  });
+
+  document.fonts.ready.then(() => {
+
+    gsap.to("body", {
+      backgroundColor: "#0a0e17",
+      duration: 0.5,
+      delay: 1,
+    });
 
   var landingText = new SplitText(
     [".landing-info h3", ".landing-intro h2", ".landing-intro h1"],
@@ -79,6 +82,7 @@ export function initialFX() {
 
   LoopText(landingText2, landingText3);
   LoopText(landingText4, landingText5);
+  });
 }
 
 function LoopText(Text1: SplitText, Text2: SplitText) {
